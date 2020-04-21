@@ -10,21 +10,16 @@
 using namespace std;
 int main()
 {
-     long long int n,a,m,pay,x;
+     long long int n,x;
      cin>>n;
-     vector<int>choc;
-     com(i,n)
-     {
-          cin>>a;
-          choc.push_back(a);
-     }
-     sortvd(choc);
-     cin>>m;
-     com(i,m)
-     {
-          cin>>x;
-          pay=0;
-          pay=accumulate(choc.begin(),choc.end(),pay)-choc[x-1];
-          cout << pay << endl;
-     }
+     if(n==0)
+          cout << "1\n";
+     else if(n%4==0)
+          cout << "6\n";
+     else if(n%4==1)
+          cout << "8\n";
+     else if(n%4==2)
+          cout << "4\n";
+     else if(n%4==3)
+          cout << "2\n";
 }

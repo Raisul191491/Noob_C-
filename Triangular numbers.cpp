@@ -10,21 +10,20 @@
 using namespace std;
 int main()
 {
-     long long int n,a,m,pay,x;
+     int n,mul=0;
      cin>>n;
-     vector<int>choc;
-     com(i,n)
+     dom(i,500)
      {
-          cin>>a;
-          choc.push_back(a);
-     }
-     sortvd(choc);
-     cin>>m;
-     com(i,m)
-     {
-          cin>>x;
-          pay=0;
-          pay=accumulate(choc.begin(),choc.end(),pay)-choc[x-1];
-          cout << pay << endl;
+          mul+=i;
+          if(n==mul)
+          {
+               cout << "YES\n";
+               return 0;
+          }
+          else if(mul>n)
+          {
+               cout << "NO\n";
+               return 0;
+          }
      }
 }

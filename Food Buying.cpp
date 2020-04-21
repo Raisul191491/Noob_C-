@@ -10,21 +10,20 @@
 using namespace std;
 int main()
 {
-     long long int n,a,m,pay,x;
-     cin>>n;
-     vector<int>choc;
-     com(i,n)
+     int t;
+     cin>>t;
+     com(i,t)
      {
-          cin>>a;
-          choc.push_back(a);
-     }
-     sortvd(choc);
-     cin>>m;
-     com(i,m)
-     {
-          cin>>x;
-          pay=0;
-          pay=accumulate(choc.begin(),choc.end(),pay)-choc[x-1];
-          cout << pay << endl;
+          int s,rem,tot=0;
+          cin>>s;
+          while(s>9)
+          {
+               rem=(s/10)*10;
+               tot+=rem;
+               s-=rem;
+               s+=rem/10;
+          }
+          tot+=s;
+          cout << tot << endl;
      }
 }
