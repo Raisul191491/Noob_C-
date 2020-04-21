@@ -7,17 +7,20 @@
 using namespace std;
 int main()
 {
-    int n,a,b,c,d;
+    int n;
     cin>>n;
-    while(1)
+    int a[n],b[n];
+    com(i,n)
     {
-        n++;
-        a=(n%10);
-        b=(n%100)/10;
-        c=(n%1000)/100;
-        d=(n/1000);
-        if (a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d)
-            break;
+        cin>>a[i]>>b[i];
     }
-    cout << n <<endl;
+    com(i,n)
+    {
+        if(b[i]>a[i])
+        {
+            cout << "Happy Alex\n";
+            return 0;
+        }
+    }
+    cout << "Poor Alex\n";
 }

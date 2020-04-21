@@ -7,17 +7,22 @@
 using namespace std;
 int main()
 {
-    int n,a,b,c,d;
+    int n,cash=1,c=1;
     cin>>n;
-    while(1)
+    int a[n],b[n];
+    com(i,n)
     {
-        n++;
-        a=(n%10);
-        b=(n%100)/10;
-        c=(n%1000)/100;
-        d=(n/1000);
-        if (a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d)
-            break;
+        cin>>a[i]>>b[i];
     }
-    cout << n <<endl;
+    com(i,n-1)
+    {
+        if(a[i]==a[i+1] && b[i]==b[i+1])
+        {
+            cash++;
+        }
+        else
+            cash=1;
+        c=max(c,cash);
+    }
+    cout << c << endl;
 }

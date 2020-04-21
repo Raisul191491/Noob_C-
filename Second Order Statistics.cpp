@@ -7,17 +7,26 @@
 using namespace std;
 int main()
 {
-    int n,a,b,c,d;
+    int n;
     cin>>n;
-    while(1)
+    int a[n];
+    com(i,n)
     {
-        n++;
-        a=(n%10);
-        b=(n%100)/10;
-        c=(n%1000)/100;
-        d=(n/1000);
-        if (a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d)
-            break;
+        cin>>a[i];
     }
-    cout << n <<endl;
+    sortI(a,n);
+    if(n<2)
+    {
+        cout << "NO\n";
+        return 0;
+    }
+    com(i,n-1)
+    {
+        if(a[i+1]>a[i])
+        {
+            cout << a[i+1] << endl;
+            return 0;
+        }
+    }
+    cout << "NO\n";
 }

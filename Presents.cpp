@@ -7,17 +7,16 @@
 using namespace std;
 int main()
 {
-    int n,a,b,c,d;
-    cin>>n;
-    while(1)
-    {
-        n++;
-        a=(n%10);
-        b=(n%100)/10;
-        c=(n%1000)/100;
-        d=(n/1000);
-        if (a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d)
-            break;
-    }
-    cout << n <<endl;
+     int n;
+     cin>>n;
+     int a[101],b[101];
+     dom(i,n)
+     {
+          cin>>a[i];
+          b[a[i]]=i;
+     }
+     dom(i,n)
+     {
+          cout << b[i] << " ";
+     }
 }

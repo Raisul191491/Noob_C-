@@ -7,17 +7,17 @@
 using namespace std;
 int main()
 {
-    int n,a,b,c,d;
-    cin>>n;
-    while(1)
-    {
-        n++;
-        a=(n%10);
-        b=(n%100)/10;
-        c=(n%1000)/100;
-        d=(n/1000);
-        if (a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d)
-            break;
-    }
-    cout << n <<endl;
+     long long int n,t,digit;
+     cin>>n>>t;
+     if(n==1 && t==10)
+          cout << "-1\n";
+     else
+     {
+          cout <<t;
+          if(t==10) n--;
+          com(i,n-1)
+          {
+               cout << "0";
+          }
+     }
 }

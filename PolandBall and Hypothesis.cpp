@@ -7,17 +7,22 @@
 using namespace std;
 int main()
 {
-    int n,a,b,c,d;
+    int n;
     cin>>n;
-    while(1)
+    if(n == 1)
     {
-        n++;
-        a=(n%10);
-        b=(n%100)/10;
-        c=(n%1000)/100;
-        d=(n/1000);
-        if (a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d)
-            break;
+        cout << "3\n";
     }
-    cout << n <<endl;
+    else if(n == 2)
+    {
+        cout << "4\n";
+    }
+    else if(n % 2 == 1)
+    {
+        cout << "1\n";
+    }
+    else
+        cout << n-2 << endl;
+
+     //I think too much :''')
 }

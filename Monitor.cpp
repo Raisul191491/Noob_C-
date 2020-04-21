@@ -7,17 +7,22 @@
 using namespace std;
 int main()
 {
-    int n,a,b,c,d;
-    cin>>n;
-    while(1)
+    int a,b,x,y,ml,mt,mw;
+    cin>>a>>b>>x>>y;
+    mw=__gcd(x,y);
+    //cout << mw;
+    x/=mw;
+    y/=mw;
+    ml=a/x;
+    mt=b/y;
+    mw=min(ml,mt);
+    if(a>x && b>y)
     {
-        n++;
-        a=(n%10);
-        b=(n%100)/10;
-        c=(n%1000)/100;
-        d=(n/1000);
-        if (a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d)
-            break;
+         cout << mw*x << " " << mw*y << endl;
     }
-    cout << n <<endl;
+    else
+    {
+         cout << "0 0" << endl;
+    }
+
 }

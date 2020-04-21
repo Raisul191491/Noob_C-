@@ -1,38 +1,30 @@
 #include<bits/stdc++.h>
+#define com(i,n)    for(int i=0;i<n;i++)
+#define dom(i,n)    for(int i=1;i<=n;i++)
+#define mom(i,n)    for(int i=n;i>=0;i--)
+#define sortI(a,n)  sort(a,a+n)
+#define sortD(a,n)  sort(a,a+n,greater<int>())
 using namespace std;
 int main()
 {
-    int n,a,row=0,col=102,x,y;
+    int n,maxi=0,mini=101,posl,posh,x,i;
     cin>>n;
-    vector<int>army;
-    while(n--)
+    for(i=1;i<=n;i++)
     {
-        cin>>a;
-        army.push_back(a);
-    }
-
-    for(int i=0; i<n; i++)
-    {
-        if(army[i]<col)
+        cin>>x;
+        if(x>maxi)
         {
-            col=army[i];
-            x=i;
+            maxi=max(maxi,x);
+            posh=i;
+        }
+        if(x<=mini)
+        {
+            mini= min(mini,x);
+            posl=i;
         }
     }
-    for(int i=0; i<n; i++)
-    {
-        if(army[i]>row)
-        {
-            row=army[i];
-            y=i;
-        }
-    }
-    if(x<y)
-    {
-        x++;
-    }
-    a=y+n-x-1;
-    cout<< a << endl;
-
-
+    if(posl<posh)
+        cout << (n-posl)+(posh-1)-1 <<endl;
+    else
+        cout << (n-posl)+(posh-1) <<endl;
 }

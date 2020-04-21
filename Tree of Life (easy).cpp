@@ -7,17 +7,18 @@
 using namespace std;
 int main()
 {
-    int n,a,b,c,d;
-    cin>>n;
-    while(1)
-    {
-        n++;
-        a=(n%10);
-        b=(n%100)/10;
-        c=(n%1000)/100;
-        d=(n/1000);
-        if (a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d)
-            break;
-    }
-    cout << n <<endl;
+     long long int n,var[100010],ll=0;
+     cin>>n;
+     com(i,n-1)
+     {
+          int a,b;
+          cin>>a>>b;
+          var[a]++;
+          var[b]++;
+     }
+     dom(i,n)
+     {
+          ll+=var[i]*(var[i]-1)/2;
+     }
+     cout << ll << endl;
 }
