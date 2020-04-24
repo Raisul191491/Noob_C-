@@ -10,25 +10,20 @@
 using namespace std;
 int main()
 {
-     int n,x;
-     cin>>n;
-     int a[n]={1};
-     com(i,n)
-     {
-          a[i]=1;
-     }
-     if(n==1)
-     {
-          cout << "1\n";
-          return 0;
-     }
-     for(int i=1;i<n;i++)
-     {
-          for(int j=1;j<n;j++)
-          {
-               a[j]+=a[j-1];
-               x=a[j];
-          }
-     }
-     cout << x << endl;
+    int n,m;
+    cin>>n>>m;
+    if(n<m)
+    {
+        cout << "-1\n";
+        return 0;
+    }
+    for(int i=(n+1)/2; i<=n; i++)
+    {
+        if(i%m==0)
+        {
+            cout<< i << endl;
+            return 0;
+        }
+    }
+    cout << "-1\n";
 }

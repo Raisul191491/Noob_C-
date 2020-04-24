@@ -10,25 +10,9 @@
 using namespace std;
 int main()
 {
-     int n,x;
-     cin>>n;
-     int a[n]={1};
-     com(i,n)
-     {
-          a[i]=1;
-     }
-     if(n==1)
-     {
-          cout << "1\n";
-          return 0;
-     }
-     for(int i=1;i<n;i++)
-     {
-          for(int j=1;j<n;j++)
-          {
-               a[j]+=a[j-1];
-               x=a[j];
-          }
-     }
-     cout << x << endl;
+     string a,b;
+     cin>>a;
+     b=a;
+     reverse(b.begin(),b.end());
+     cout << a << b << endl;
 }

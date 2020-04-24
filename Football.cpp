@@ -10,25 +10,13 @@
 using namespace std;
 int main()
 {
-     int n,x;
+     int n;
      cin>>n;
-     int a[n]={1};
+     string a[n];
      com(i,n)
      {
-          a[i]=1;
+          cin>>a[i];
      }
-     if(n==1)
-     {
-          cout << "1\n";
-          return 0;
-     }
-     for(int i=1;i<n;i++)
-     {
-          for(int j=1;j<n;j++)
-          {
-               a[j]+=a[j-1];
-               x=a[j];
-          }
-     }
-     cout << x << endl;
+     sortI(a,n);
+     cout << a[n/2] << endl;
 }

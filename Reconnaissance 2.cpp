@@ -10,25 +10,26 @@
 using namespace std;
 int main()
 {
-     int n,x;
+     int n,b,c;
      cin>>n;
-     int a[n]={1};
+     int a[n+n];
      com(i,n)
      {
-          a[i]=1;
+          cin>>a[i];
+          a[i+n]=a[i];
      }
-     if(n==1)
+     int x=10000,y;
+     com(i,n+n-1)
      {
-          cout << "1\n";
-          return 0;
-     }
-     for(int i=1;i<n;i++)
-     {
-          for(int j=1;j<n;j++)
+          y=abs(a[i+1]-a[i]);
+          if(y<x)
           {
-               a[j]+=a[j-1];
-               x=a[j];
+               x=min(x,y);
+               b=i+1;
+               c=i+2;
+               if(c>n)
+                    c-=n;
           }
      }
-     cout << x << endl;
+     cout << b << " " << c << endl;
 }

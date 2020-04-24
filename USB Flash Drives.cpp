@@ -10,25 +10,21 @@
 using namespace std;
 int main()
 {
-     int n,x;
-     cin>>n;
-     int a[n]={1};
+     int n,m,st=0;
+     cin>>n>>m;
+     int usb[n];
      com(i,n)
      {
-          a[i]=1;
+          cin>>usb[i];
      }
-     if(n==1)
+     sortD(usb,n);
+     com(i,n)
      {
-          cout << "1\n";
-          return 0;
-     }
-     for(int i=1;i<n;i++)
-     {
-          for(int j=1;j<n;j++)
+          st+=usb[i];
+          if(st>=m)
           {
-               a[j]+=a[j-1];
-               x=a[j];
+               cout << i+1 << endl;
+               break;
           }
      }
-     cout << x << endl;
 }
