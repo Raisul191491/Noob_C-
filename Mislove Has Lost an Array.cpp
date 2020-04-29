@@ -10,18 +10,21 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n,l,r,x=1;
+     cin>>n>>l>>r;
+     int mn=0,mx=0;
+     dom(i,r)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          x=pow(2,i-1);
+          mx+=x;
      }
+     mx+=(n-r)*x;
+     x=1;
+     dom(i,l)
+     {
+          x=pow(2,i-1);
+          mn+=x;
+     }
+     mn+=(n-l);
+     cout << mn << " " << mx << endl;
 }

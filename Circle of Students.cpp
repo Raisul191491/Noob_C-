@@ -10,32 +10,30 @@
 using namespace std;
 int main()
 {
-    int n;
-    cin>>n;
-    com(i,n)
+    int q;
+    cin>>q;
+    com(i,q)
     {
-        int flag;
-        string s;
-        cin>>s;
-        sortvi(s);
-        if(s.size()==1)
-            flag=0;
-        else
+        int n,flag=0;
+        cin>>n;
+        int a[n];
+        com(i,n)
         {
-            com(i,s.size()-1)
+            cin>>a[i];
+        }
+        dom(i,n-1)
+        {
+            if (abs(a[i]-a[i-1])==1||(a[i]==1&&a[i-1]==n)||(a[i-1]==1&&a[i]==n))
+                flag=0;
+            else
             {
-                if(s[i+1]==s[i]+1)
-                    flag=0;
-                else
-                {
-                    flag=1;
-                    break;
-                }
+                flag=1;
+                break;
             }
         }
         if(flag==1)
-            cout << "No\n";
+            cout << "NO\n";
         else
-            cout << "Yes\n";
+            cout << "YES\n";
     }
 }

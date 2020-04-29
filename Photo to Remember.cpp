@@ -10,18 +10,26 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
-     {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
-     }
+    int n,rem;
+    cin>>n;
+    vector<int>w,h,v;
+    com(i,n)
+    {
+        int x,y;
+        cin>>x>>y;
+        w.push_back(x);
+        h.push_back(y);
+        v.push_back(y);
+    }
+    int sum=0;
+    sum=sumall(w,sum);
+    sortvd(v);
+    int rem1=v[0],rem2=v[1];
+    com(i,n)
+    {
+         if(h[i]!=rem1)
+          cout << (sum-w[i])*rem1 << " ";
+         else
+          cout << (sum-w[i])*rem2 << " ";
+    }
 }

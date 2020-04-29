@@ -10,18 +10,15 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     string a;
+     com(i,3)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          string s;
+          cin>>s;
+          a+=s[0];
      }
+     if(a=="prr" || a=="spp" || a=="rss") cout << "F\n";
+     else if(a=="rpr" || a=="psp" || a=="srs") cout << "M\n";
+     else if(a=="rrp" || a=="pps" || a=="ssr") cout << "S\n";
+     else cout << "?\n";
 }

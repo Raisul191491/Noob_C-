@@ -10,18 +10,17 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n;
+     cin>>n;
+     int moon[n];
+     com(i,n)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          cin>>moon[i];
      }
+     if(n==1 && moon[n-1]!=15 && moon[n-1]!=0)
+          cout << "-1\n";
+     else if((moon[n-2]>moon[n-1] && moon[n-1]!=0) || moon[n-1]==15)
+          cout << "DOWN\n";
+     else
+          cout << "UP\n";
 }

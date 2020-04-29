@@ -10,18 +10,22 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     string s,x;
+     int mis=0;
+     cin>>s;
+     x=s;
+     reverse(x.begin(),x.end());
+     com(i,s.size()/2)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          if(s[i]!=x[i])
+               mis++;
+          if(mis>1)
+               break;
      }
+     if(mis==1 || (mis==0 && s.size()%2==1))
+     {
+          cout << "YES\n";
+     }
+     else
+          cout<< "NO\n";
 }

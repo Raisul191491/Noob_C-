@@ -14,14 +14,11 @@ int main()
      cin>>t;
      com(i,t)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          long long int a,b,x,y,z;
+          cin>>x>>y>>a>>b;
+          if(y<x)
+               swap(x,y);
+          z=x*b+(y-x)*a;
+          cout << min(z,((x+y)*a))<< endl;
      }
 }

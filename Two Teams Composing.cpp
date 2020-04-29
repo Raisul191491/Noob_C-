@@ -14,14 +14,23 @@ int main()
      cin>>t;
      com(i,t)
      {
-          float di=0;
-          int n;
+          int n,x,y=0,cnt=0;
           cin>>n;
+          int a[n+1]={0};
           dom(i,n)
           {
-               di+=(1/(float)i);
+               cin>>x;
+               a[x]++;
+               if(a[x]==1)
+                    cnt++;
+               y=max(y,a[x]);
           }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          if(y==cnt)
+               cout << cnt-1 << endl;
+          else
+          {
+               cnt=min(y,cnt);
+               cout << cnt << endl;
+          }
      }
 }

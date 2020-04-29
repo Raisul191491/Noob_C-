@@ -10,18 +10,24 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     long long int n,b,d;
+     cin>>n>>b>>d;
+     long long int was=0,sum=0,x;
+     vector<int>a;
+     com(i,n)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          cin>>x;
+          if(x<=b)
+               a.push_back(x);
      }
+     com(i,a.size())
+     {
+          sum+=a[i];
+          if(sum>d)
+          {
+               was++;
+               sum=0;
+          }
+     }
+     cout << was << endl;
 }

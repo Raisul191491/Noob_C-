@@ -10,18 +10,11 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
-     {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
-     }
+    int a,b,c,d,e;
+    cin>>a>>b>>c>>d>>e;
+    int s=a+b+c+d+e;
+    if(s%5==0 && s>0)
+        cout << s/5 << endl;
+    else
+        cout << "-1\n";
 }

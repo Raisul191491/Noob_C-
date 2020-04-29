@@ -10,18 +10,18 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
-     {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
-     }
+    int n,pl=0;
+    string s;
+    cin>>n>>s;
+    com(i,s.size())
+    {
+        if(s[i]=='+')
+            pl++;
+        else if(pl!=0 && s[i]=='-')
+            pl--;
+    }
+    if(pl<=0)
+        cout << "0\n";
+    else
+        cout << pl << endl;
 }

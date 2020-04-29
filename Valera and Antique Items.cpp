@@ -10,32 +10,26 @@
 using namespace std;
 int main()
 {
-    int n;
-    cin>>n;
+    int n,v;
+    cin>>n>>v;
+    vector<int>low;
     com(i,n)
     {
-        int flag;
-        string s;
-        cin>>s;
-        sortvi(s);
-        if(s.size()==1)
-            flag=0;
-        else
+        int k,x,mx=10000000;
+        cin>>k;
+        com(j,k)
         {
-            com(i,s.size()-1)
-            {
-                if(s[i+1]==s[i]+1)
-                    flag=0;
-                else
-                {
-                    flag=1;
-                    break;
-                }
-            }
+            cin>>x;
+            mx=min(mx,x);
         }
-        if(flag==1)
-            cout << "No\n";
-        else
-            cout << "Yes\n";
+        if(mx<v)
+        {
+            low.push_back(i+1);
+        }
+    }
+    cout << low.size() << endl;
+    com(i,low.size())
+    {
+         cout << low[i] << " ";
     }
 }

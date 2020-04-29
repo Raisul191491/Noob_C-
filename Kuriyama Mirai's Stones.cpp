@@ -12,30 +12,29 @@ int main()
 {
     int n;
     cin>>n;
+    long long int a[n+1],b[n+1],c[n+1],d[n+1];
     com(i,n)
     {
-        int flag;
-        string s;
-        cin>>s;
-        sortvi(s);
-        if(s.size()==1)
-            flag=0;
+        cin>>a[i];
+        b[i]=a[i];
+    }
+    sortI(b,n);
+    c[0]=a[0];
+    d[0]=b[0];
+    for(int i=1; i<n; i++)
+    {
+        c[i]=a[i]+c[i-1];
+        d[i]=b[i]+d[i-1];
+    }
+    int m;
+    cin>>m;
+    com(i,m)
+    {
+        long long int q,l,r;
+        cin>>q>>l>>r;
+        if(q==1)
+            cout << c[r-1]-c[l-1]+a[l-1] << endl;
         else
-        {
-            com(i,s.size()-1)
-            {
-                if(s[i+1]==s[i]+1)
-                    flag=0;
-                else
-                {
-                    flag=1;
-                    break;
-                }
-            }
-        }
-        if(flag==1)
-            cout << "No\n";
-        else
-            cout << "Yes\n";
+            cout << d[r-1]-d[l-1]+b[l-1] << endl;
     }
 }

@@ -10,18 +10,9 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
-     {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
-     }
+     int a,b,c,d,x,y;
+     cin>>a>>b>>c>>d;
+     x=(b+d)*2;
+     y=(max(a,c)+2)*2;
+     cout << x+y << endl;
 }

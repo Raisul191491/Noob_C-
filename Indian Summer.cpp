@@ -10,18 +10,15 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n;
+     cin>>n;
+     string a;
+     cin.ignore();
+     set<string>x;
+     com(i,n)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          getline(cin,a);
+          x.insert(a);
      }
+     cout << x.size() << endl;
 }

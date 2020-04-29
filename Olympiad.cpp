@@ -10,18 +10,16 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n;
+     cin>>n;
+     set<int>point;
+     com(i,n)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          int x;
+          cin>>x;
+          if(x==0)
+               continue;
+          point.insert(x);
      }
+     cout << point.size() << endl;
 }

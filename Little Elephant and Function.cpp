@@ -12,30 +12,14 @@ int main()
 {
     int n;
     cin>>n;
-    com(i,n)
+    if(n==1)
+        cout << "1\n";
+    else
     {
-        int flag;
-        string s;
-        cin>>s;
-        sortvi(s);
-        if(s.size()==1)
-            flag=0;
-        else
+        cout << n << " ";
+        dom(i,n-1)
         {
-            com(i,s.size()-1)
-            {
-                if(s[i+1]==s[i]+1)
-                    flag=0;
-                else
-                {
-                    flag=1;
-                    break;
-                }
-            }
+             cout << i << " ";
         }
-        if(flag==1)
-            cout << "No\n";
-        else
-            cout << "Yes\n";
     }
 }

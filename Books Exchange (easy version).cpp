@@ -10,18 +10,30 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int q;
+     cin>>q;
+     com(i,q)
      {
-          float di=0;
-          int n;
+          int n,x;
           cin>>n;
-          dom(i,n)
+          int a[n];
+          com(i,n)
           {
-               di+=(1/(float)i);
+               cin>>x;
+               x--;
+               a[i]=x;
           }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          com(j,n)
+          {
+               int pos,cnt=1;
+               pos=a[j];
+               while(pos!=j)
+               {
+                    cnt++;
+                    pos=a[pos];
+               }
+               cout << cnt << " ";
+          }
+          cout << endl;
      }
 }

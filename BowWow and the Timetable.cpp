@@ -10,33 +10,25 @@
 using namespace std;
 int main()
 {
-    int a,b,wa=0,wb=0,dr=0;
-    cin>>a>>b;
-    if(a==b)
+    int mis=0;
+    string s;
+    cin>>s;
+    mis=s.size()/2;
+    if(s.size()%2==0)
     {
-         cout << "0 6 0\n";
+         cout << mis << endl;
          return 0;
-    }
-    if(a<b)
-    {
-        wa+=a;
-        wb+=(7-b);
-    }
-    else if(b<a)
-    {
-        wb+=b;
-        wa+=(7-a);
-    }
-    if(abs(b-a)%2==0)
-    {
-        dr++;
-        wa+=(abs(b-a)-1)/2;
-        wb+=(abs(b-a)-1)/2;
     }
     else
     {
-        wa+=(abs(b-a)-1)/2;
-        wb+=(abs(b-a)-1)/2;
+         dom(i,s.size()-1)
+         {
+              if(s[i]=='1')
+              {
+                   cout << mis+1 << endl;
+                   return 0;
+              }
+         }
+         cout << mis << endl;
     }
-    cout << wa << " " << dr << " " << wb << endl;
 }

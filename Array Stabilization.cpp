@@ -10,18 +10,14 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n;
+     cin>>n;
+     int a[n];
+     com(i,n)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          cin>>a[i];
      }
+     sortI(a,n);
+     int x= min(a[n-2]-a[0],a[n-1]-a[1]);
+     cout << x << endl;
 }

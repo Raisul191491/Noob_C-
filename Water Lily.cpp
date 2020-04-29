@@ -10,18 +10,7 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
-     {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
-     }
+     double h,l;
+     cin>>h>>l;
+     cout << fixed << setprecision(15) << (l*l-h*h)/(2*h) << endl;
 }

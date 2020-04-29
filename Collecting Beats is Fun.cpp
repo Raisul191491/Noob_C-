@@ -10,32 +10,32 @@
 using namespace std;
 int main()
 {
-    int n;
-    cin>>n;
-    com(i,n)
+    int x,z;
+    cin>>x;
+    int a[10]= {0},b[4][4];
+    com(i,4)
     {
-        int flag;
-        string s;
-        cin>>s;
-        sortvi(s);
-        if(s.size()==1)
-            flag=0;
-        else
+        com(j,4)
         {
-            com(i,s.size()-1)
+            char y;
+            cin>>y;
+            if(y=='.')
+                continue;
+            else
             {
-                if(s[i+1]==s[i]+1)
-                    flag=0;
-                else
-                {
-                    flag=1;
-                    break;
-                }
+                z=y-'0';
+                a[z]++;
             }
         }
-        if(flag==1)
-            cout << "No\n";
-        else
-            cout << "Yes\n";
     }
+    x*=2;
+    com(i,10)
+    {
+         if(a[i]>x)
+         {
+              cout << "NO\n";
+              return 0;
+         }
+    }
+    cout << "YES\n";
 }

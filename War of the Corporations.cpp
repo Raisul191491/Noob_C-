@@ -10,18 +10,18 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
-     {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
-     }
+    string s,a;
+    cin>>s>>a;
+    int x,y,cnt=0;
+    x=s.size();
+    y=a.size();
+    com(i,x)
+    {
+         if(s.substr(i,y)==a)
+         {
+              cnt++;
+              i+=(y-1);
+         }
+    }
+    cout << cnt << endl;
 }

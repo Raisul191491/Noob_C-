@@ -14,14 +14,10 @@ int main()
      cin>>t;
      com(i,t)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          long long int a,b,c,dis,x=0;
+          cin>>a>>b>>c;
+          dis=abs(a-b)+abs(a-c)+abs(b-c)-4;
+          dis=max(dis,x);
+          cout << dis << endl;
      }
 }

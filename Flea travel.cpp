@@ -10,18 +10,22 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n,sta=1;
+     cin>>n;
+     for(int i=1;;i++)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
+          if(n==sta)
           {
-               di+=(1/(float)i);
+               cout << "YES\n";
+               return 0;
           }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          else
+               sta*=2;
+          if(sta>n)
+          {
+               cout << "NO\n";
+               return 0;
+          }
+          //cout << sta;
      }
 }

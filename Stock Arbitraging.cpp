@@ -10,18 +10,28 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n,m,rub;
+     cin>>n>>m>>rub;
+     int a[n],b[m];
+     com(i,n)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          cin>>a[i];
+     }
+     com(i,m)
+     {
+          cin>>b[i];
+     }
+     sortI(a,n);
+     sortD(b,m);
+     if(a[0]>=b[0])
+          cout << rub << endl;
+     else
+     {
+          int x,y;
+          y=rub/a[0];
+          x=y*a[0];
+          rub-=x;
+          rub+=y*b[0];
+          cout << rub << endl;
      }
 }

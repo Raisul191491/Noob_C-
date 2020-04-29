@@ -10,18 +10,25 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n,lft;
+     cin>>n;
+     int time[n+2];
+     time[0]=0;
+     time[n+1]=90;
+     dom(i,n)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          cin>>time[i];
      }
+     com(i,n+1)
+     {
+          if(time[i+1]-time[i]>15)
+          {
+               lft=time[i]+15;
+               break;
+          }
+          else
+               lft=time[i+1];
+     }
+     cout << lft << endl;
+
 }

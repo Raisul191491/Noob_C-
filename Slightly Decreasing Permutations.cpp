@@ -10,18 +10,22 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n,k,x;
+     cin>>n>>k;
+     x=n;
+     vector<int>per;
+     while(k>0)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          per.push_back(x);
+          x--;
+          k--;
      }
+     dom(i,n-k)
+     {
+          per.push_back(i);
+     }
+    com(i,n)
+    {
+         cout << per[i] << " " ;
+    }
 }

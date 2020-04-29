@@ -10,18 +10,21 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int q;
+     cin>>q;
+     com(i,q)
      {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
+          int n,k;
+          cin>>n>>k;
+          int a[n];
+          com(i,n)
           {
-               di+=(1/(float)i);
+               cin>>a[i];
           }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
+          sortI(a,n);
+          if(abs(a[n-1]-(a[0]+k))<=k)
+               cout << a[0]+k << endl;
+          else
+               cout << "-1\n";
      }
 }

@@ -10,33 +10,19 @@
 using namespace std;
 int main()
 {
-    int a,b,wa=0,wb=0,dr=0;
-    cin>>a>>b;
-    if(a==b)
-    {
-         cout << "0 6 0\n";
-         return 0;
-    }
-    if(a<b)
-    {
-        wa+=a;
-        wb+=(7-b);
-    }
-    else if(b<a)
-    {
-        wb+=b;
-        wa+=(7-a);
-    }
-    if(abs(b-a)%2==0)
-    {
-        dr++;
-        wa+=(abs(b-a)-1)/2;
-        wb+=(abs(b-a)-1)/2;
-    }
+    long long int n,cnt=0,x;
+    cin >> n;
+    x=log10(n);
+    cnt+=n;
+    if(n<10)
+        cout << cnt << endl;
     else
     {
-        wa+=(abs(b-a)-1)/2;
-        wb+=(abs(b-a)-1)/2;
+        com(i,x)
+        {
+            n-=9*pow(10,i);
+            cnt+=n;
+        }
+        cout << cnt << endl;
     }
-    cout << wa << " " << dr << " " << wb << endl;
 }

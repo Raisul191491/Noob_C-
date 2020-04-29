@@ -10,18 +10,15 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
-     {
-          float di=0;
-          int n;
-          cin>>n;
-          dom(i,n)
-          {
-               di+=(1/(float)i);
-          }
-          di=di*(float)n;
-          cout << fixed << setprecision(2) << di << endl;
-     }
+    int a,b,c,d;
+    cin>>a>>b>>c>>d;
+    int mis,vas;
+    mis=max(((3*a)/10),(a-a/250*c));
+    vas=max(((3*b)/10),(b-b/250*d));
+    if(mis<vas)
+        cout << "Vasya\n";
+    else if(vas<mis)
+        cout << "Misha\n";
+    else
+        cout << "Tie\n";
 }
