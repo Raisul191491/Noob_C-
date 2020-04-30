@@ -14,15 +14,18 @@ int main()
      cin>>t;
      com(i,t)
      {
-          int n;
-          cin>>n;
-          n*=2;
+          int n,k,mn=1000000001;
+          cin>>n>>k;
           int a[n];
           com(i,n)
           {
                cin>>a[i];
           }
           sortI(a,n);
-          cout << a[n/2]-a[(n/2)-1] << endl;
+          for(int i=0,j=k-1;i<n,j<n;i++,j++)
+          {
+               mn=min(abs(a[i]-a[j]),mn);
+          }
+          cout << mn << endl;
      }
 }

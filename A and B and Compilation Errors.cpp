@@ -10,19 +10,25 @@
 using namespace std;
 int main()
 {
-     int t;
-     cin>>t;
-     com(i,t)
+     int n,x;
+     cin>>n;
+     long long int a=0,b=0;
+     com(i,n)
      {
-          int n;
-          cin>>n;
-          n*=2;
-          int a[n];
-          com(i,n)
-          {
-               cin>>a[i];
-          }
-          sortI(a,n);
-          cout << a[n/2]-a[(n/2)-1] << endl;
+          cin>>x;
+          a+=x;
      }
+     b=a;
+     com(i,n-1)
+     {
+          cin>>x;
+          a-=x;
+     }
+     cout << a <<endl;
+     com(i,n-2)
+     {
+          cin>>x;
+          b-=x;
+     }
+     cout << b-a << endl;
 }
