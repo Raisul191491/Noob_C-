@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+#define com(i,n)      for(int i=0;i<n;i++)
+#define dom(i,n)      for(int i=1;i<=n;i++)
+#define mom(i,n)      for(int i=n;i>=0;i--)
+#define sortI(a,n)    sort(a,a+n)
+#define sortD(a,n)    sort(a,a+n,greater<int>())
+#define sortvi(a)     sort(a.begin(),a.end())
+#define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
+#define sumall(a,x)   accumulate(a.begin(),a.end(),x)
+using namespace std;
+int main()
+{
+    int cnt1=0,cnt2=0,x;
+    string s,t;
+    cin>>s;
+    t=s;
+    com(i,s.size())
+    {
+        if(s[i]=='A'&&s[i+1]=='B')
+        {
+            cnt1++;
+            x=i+2;
+            break;
+        }
+    }
+    for(int i=x; i<s.size(); i++)
+    {
+        if(s[i]=='B'&&s[i+1]=='A')
+        {
+            cnt1++;
+            break;
+        }
+    }
+    com(i,t.size())
+    {
+        if(s[i]=='B'&&s[i+1]=='A')
+        {
+            cnt2++;
+            x=i+2;
+            break;
+        }
+    }
+    for(int i=x; i<t.size(); i++)
+    {
+        if(s[i]=='A'&&s[i+1]=='B')
+        {
+            cnt2++;
+            break;
+        }
+    }
+    if(cnt1==2 || cnt2==2)
+        cout << "YES\n";
+    else
+        cout << "NO\n";
+}
