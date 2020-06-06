@@ -18,20 +18,34 @@ int main()
     cin>>t;
     com(i,t)
     {
-        ll n,x=0,sec=0,flag=0;
+        int n,odd=0,eve=0,flag=0;
         cin>>n;
-        ll a[n];
-        com(i,n) cin>>a[i];
-        sec=a[0];
-        flag=0;
-        dom(i,n-1)
+        int a[n],cnt=0;
+        com(i,n)
         {
-            sec=max(sec,a[i]);
-            if(sec-a[i])
-            {
-                 flag=max(flag,(ll)(log2(sec-a[i])+1));
-            }
+            cin>>a[i];
+            if(a[i]%2==0)
+               eve++;
+            else
+               odd++;
         }
-        cout << flag << endl;
+        sortI(a,n);
+        if(odd%2==0 && eve%2==0)
+          cout << "YES\n";
+        else
+        {
+             com(i,n-1)
+             {
+                  if(a[i]+1==a[i+1])
+                  {
+                       flag=1;
+                       break;
+                  }
+             }
+             if(flag)
+               cout << "YES\n";
+             else
+               cout << "NO\n";
+        }
     }
 }

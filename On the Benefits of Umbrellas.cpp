@@ -11,27 +11,30 @@ typedef long long     ll;
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 using namespace std;
-map<ll,ll>mp;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    int n,m,ups=0,sta,high=INT_MAX;
+    cin>>n>>m;
+    int g[n],b[m];
+    com(i,n)
     {
-        ll n,x=0,sec=0,flag=0;
-        cin>>n;
-        ll a[n];
-        com(i,n) cin>>a[i];
-        sec=a[0];
-        flag=0;
-        dom(i,n-1)
-        {
-            sec=max(sec,a[i]);
-            if(sec-a[i])
-            {
-                 flag=max(flag,(ll)(log2(sec-a[i])+1));
-            }
-        }
-        cout << flag << endl;
+        cin>>g[i];
     }
+    sortD(g,n);
+    com(i,m)
+    {
+        cin>>b[i];
+    }
+    sortD(b,m);
+    sta=min(n,m);
+    for(int i=0; i<=sta; i++)
+    {
+        ups=0;
+        for (int j=i; j<n; ++j)
+            ups+= g[j];
+        for (int j=i; j<m; ++j)
+            ups+= b[j] * i;
+        high=min(high,ups);
+    }
+    cout << high << endl;
 }

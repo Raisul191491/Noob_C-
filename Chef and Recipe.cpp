@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 typedef long long     ll;
+#define fr            first
+#define sc            second
 #define com(i,n)      for(int i=0;i<n;i++)
 #define dom(i,n)      for(int i=1;i<=n;i++)
 #define mom(i,n)      for(int i=n;i>=0;i--)
@@ -9,49 +11,47 @@ typedef long long     ll;
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 using namespace std;
+map<ll,ll>mp;
 int main()
 {
     int t;
     cin>>t;
-    for(int i=0; i<t; i++)
+    com(i,t)
     {
-        int n,flag=0;
+        int n,con[1001]= {0},pos[1001]= {0},flag=0;
         cin>>n;
-        int a[n],b[n];
-        for(int i=0; i<n; i++)
+        int a[n];
+        com(i,n)
         {
             cin>>a[i];
+            con[a[i]]++;
         }
-        for(int i=0; i<n; i++)
+        sortD(con,1001);
+        com(i,n-1)
         {
-            cin>>b[i];
-        }
-        int odd[2]= {0};
-        if(a[0]!=b[0])
-            flag=1;
-        else
-        {
-            com(i,n)
+            if(con[i+1]!=0 && con[i]!=0 && con[i]==con[i+1])
             {
-                if(a[i]>b[i] && odd[0]==0)
-                {
-                    flag=1;
-                    break;
-                }
-                if(a[i]<b[i] && odd[1]==0)
-                {
-                    flag=1;
-                    break;
-                }
-                if(a[i]==-1)
-                    odd[0]=1;
-                if(a[i]==1)
-                    odd[1]=1;
+                flag=1;
+                break;
             }
         }
         if(flag==0)
-            cout << "YES" <<endl;
+        {
+            pos[a[0]]++;
+            dom(i,n-1)
+            {
+                if(a[i-1]!=a[i] && pos[a[i]]>0)
+                {
+                    flag=1;
+                    break;
+                }
+                else
+                    pos[a[i]]++;
+            }
+        }
+        if(flag)
+            cout << "NO\n";
         else
-            cout<< "NO" <<endl;
+            cout << "YES\n";
     }
 }

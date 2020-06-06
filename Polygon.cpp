@@ -18,20 +18,37 @@ int main()
     cin>>t;
     com(i,t)
     {
-        ll n,x=0,sec=0,flag=0;
+        int n,flag=0;
         cin>>n;
-        ll a[n];
-        com(i,n) cin>>a[i];
-        sec=a[0];
-        flag=0;
-        dom(i,n-1)
+        char a[n][n];
+        com(i,n)
         {
-            sec=max(sec,a[i]);
-            if(sec-a[i])
+            com(j,n)
             {
-                 flag=max(flag,(ll)(log2(sec-a[i])+1));
+                cin>>a[i][j];
             }
         }
-        cout << flag << endl;
+        com(i,n)
+        {
+            com(j,n)
+            {
+                if(a[i][j]=='1' && i<n-1 && j<n-1)
+                {
+                    if(a[i][j+1]=='0' && a[i+1][j]=='0')
+                    {
+                        flag=1;
+                        break;
+                    }
+                }
+            }
+            if(flag)
+            {
+                cout << "NO\n";
+                break;
+            }
+        }
+        if(flag==0)
+            cout << "YES\n";
+
     }
 }

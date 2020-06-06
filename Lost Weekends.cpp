@@ -10,28 +10,29 @@ typedef long long     ll;
 #define sortvi(a)     sort(a.begin(),a.end())
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
+#define pi            3.14159265358979323846264338327950
 using namespace std;
 map<ll,ll>mp;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
-    {
-        ll n,x=0,sec=0,flag=0;
-        cin>>n;
-        ll a[n];
-        com(i,n) cin>>a[i];
-        sec=a[0];
-        flag=0;
-        dom(i,n-1)
-        {
-            sec=max(sec,a[i]);
-            if(sec-a[i])
-            {
-                 flag=max(flag,(ll)(log2(sec-a[i])+1));
-            }
-        }
-        cout << flag << endl;
-    }
+     int t;
+     cin>>t;
+     int tot=24*5;
+     com(i,t)
+     {
+          int sum=0;
+          int x;
+          com(i,5)
+          {
+               cin>>x;
+               sum+=x;
+          }
+          int p;
+          cin>>p;
+          sum*=p;
+          if(sum<=tot)
+               cout << "No\n";
+          else
+               cout << "Yes\n";
+     }
 }

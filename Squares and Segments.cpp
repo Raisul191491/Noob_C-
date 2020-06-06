@@ -9,30 +9,22 @@ typedef long long     ll;
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 using namespace std;
-
-void solve()
-{
-    int n,x,mx=INT_MIN,flag=0;
-    cin>>n>>x;
-    int a[n];
-    com(i,n)
-    {
-        cin>>a[i];
-        if(a[i]==x)
-        {
-            cout << "1\n";
-            flag=1;
-        }
-        mx=max(mx,a[i]);
-    }
-    if(flag==0)
-        cout << max(2,((x+mx-1)/mx)) << endl;
-}
-
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
-        solve();
+    int n,m,p;
+    cin>>n;
+    p=sqrt(n);
+    m=sqrt(n);
+    if(n<=2)
+        cout << n+1 << endl;
+    else
+    {
+        if(p*m<n)
+        {
+            p++;
+            if(p*m<n)
+                m++;
+        }
+        cout << p+m << endl;
+    }
 }

@@ -23,6 +23,7 @@ int main()
         if(a[i]>a[i+1])
         {
             x=i;
+            while(a[x]==a[x-1] && x>0) x--;
             break;
         }
     }
@@ -31,10 +32,11 @@ int main()
         if(a[i]<a[i-1])
         {
             y=i;
+            while(a[y]==a[y+1] && y<n-1) y++;
             break;
         }
     }
-    reverse(a+x,a+y+1);
+    swap(a[x],a[y]);
     for(int i=0; i<n-1; i++)
     {
         if(a[i]>a[i+1])
@@ -43,13 +45,13 @@ int main()
             break;
         }
     }
+    //    com(i,n) cout << a[i] << " ";
     if(flag==1)
     {
-        cout << "no" << endl;
+        cout << "NO" << endl;
     }
     else
     {
-        cout << "yes" << endl;
-        cout << x+1 << " " << y+1 <<endl;
+        cout << "YES" << endl;
     }
 }

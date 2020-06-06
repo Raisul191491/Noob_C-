@@ -12,27 +12,22 @@ using namespace std;
 
 void solve()
 {
-    int n,x,mx=INT_MIN,flag=0;
-    cin>>n>>x;
-    int a[n];
-    com(i,n)
+    int n,s;
+    cin>>n>>s;
+    if(s/n<=1)
+        cout << "NO\n";
+    else
     {
-        cin>>a[i];
-        if(a[i]==x)
-        {
-            cout << "1\n";
-            flag=1;
-        }
-        mx=max(mx,a[i]);
+        cout << "YES\n";
+        com(i,n-1) cout << 2 << " ";
+        cout << s-2*(n-1) << endl;
+        cout << 1 << endl;
     }
-    if(flag==0)
-        cout << max(2,((x+mx-1)/mx)) << endl;
 }
 
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
-        solve();
+    solve();
 }
+
+

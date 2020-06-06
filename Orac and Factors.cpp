@@ -12,7 +12,7 @@ using namespace std;
 
 void solve()
 {
-    int n,k,div=2;
+    ll n,k,div=2;
     cin>>n>>k;
     while(n%div)
         div++;

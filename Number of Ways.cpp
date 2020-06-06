@@ -12,27 +12,35 @@ using namespace std;
 
 void solve()
 {
-    int n,x,mx=INT_MIN,flag=0;
-    cin>>n>>x;
-    int a[n];
-    com(i,n)
+    ll n,sum=0,cnt=0,rem=0;
+    cin>>n;
+    ll a[n+1]={0};
+    dom(i,n)
     {
         cin>>a[i];
-        if(a[i]==x)
-        {
-            cout << "1\n";
-            flag=1;
-        }
-        mx=max(mx,a[i]);
+        sum+=a[i];
+        a[i]+=a[i-1];
     }
-    if(flag==0)
-        cout << max(2,((x+mx-1)/mx)) << endl;
+    if(sum%3!=0)
+    {
+        cout << "0\n";
+    }
+    else
+    {
+        ll nsum=sum/3;
+        dom(i,n-1)
+        {
+            if(a[i]==2*nsum)
+                cnt+=rem;
+            if(a[i]==nsum)
+                rem++;
+        }
+        cout << cnt << endl;
+    }
 }
 
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
-        solve();
+    solve();
 }
+

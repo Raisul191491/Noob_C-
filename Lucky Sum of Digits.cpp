@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+typedef long long     ll;
+#define com(i,n)      for(int i=0;i<n;i++)
+#define dom(i,n)      for(int i=1;i<=n;i++)
+#define mom(i,n)      for(int i=n;i>=0;i--)
+#define sortI(a,n)    sort(a,a+n)
+#define sortD(a,n)    sort(a,a+n,greater<int>())
+#define sortvi(a)     sort(a.begin(),a.end())
+#define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
+#define sumall(a,x)   accumulate(a.begin(),a.end(),x)
+using namespace std;
+int main()
+{
+     int n,sev=0,fo=0;
+     cin>>n;
+     sev=n/7;
+     if((n%7==1 || n%7==5) && sev>0)
+          sev--;
+     else if((n%7==2 || n%7==6)  && sev>1)
+          sev-=2;
+     else if((n%7==3) && sev>2)
+          sev-=3;
+     if((n-sev*7)%4==0)
+     {
+          fo=(n-sev*7)/4;
+          com(i,fo)
+          {
+               cout << "4";
+          }
+          com(i,sev)
+          {
+               cout << "7";
+          }
+          cout << endl;
+     }
+     else
+          cout << "-1\n";
+}

@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 typedef long long     ll;
+typedef unsigned long long     ull;
 #define com(i,n)      for(int i=0;i<n;i++)
 #define dom(i,n)      for(int i=1;i<=n;i++)
 #define mom(i,n)      for(int i=n;i>=0;i--)
@@ -9,24 +10,29 @@ typedef long long     ll;
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 using namespace std;
-
 void solve()
 {
-    int n,x,mx=INT_MIN,flag=0;
-    cin>>n>>x;
-    int a[n];
+    int n,x,cnt=0,siz,beg=0,en=0;
+    cin>>n;
+    vector<ll>pos(n+1);
+    pos[0]=0;
     com(i,n)
     {
-        cin>>a[i];
-        if(a[i]==x)
-        {
-            cout << "1\n";
-            flag=1;
-        }
-        mx=max(mx,a[i]);
+        cin>>x;
+        pos[i]=x;
     }
-    if(flag==0)
-        cout << max(2,((x+mx-1)/mx)) << endl;
+    sortvi(pos);
+    while(1)
+    {
+        en=1;
+        while(beg+en<=n && pos[beg+en]>en)
+            en++;
+        if(beg+en>n)
+            break;
+        cnt++;
+        beg+=en;
+    }
+    cout << cnt << endl;
 }
 
 int main()
@@ -34,5 +40,10 @@ int main()
     int t;
     cin>>t;
     while(t--)
+    {
         solve();
+    }
 }
+
+
+

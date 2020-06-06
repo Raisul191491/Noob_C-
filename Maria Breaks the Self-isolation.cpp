@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 typedef long long     ll;
+#define fr            first
+#define sc            second
 #define com(i,n)      for(int i=0;i<n;i++)
 #define dom(i,n)      for(int i=1;i<=n;i++)
 #define mom(i,n)      for(int i=n;i>=0;i--)
@@ -9,38 +11,35 @@ typedef long long     ll;
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 using namespace std;
+map<ll,ll>mp;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    int q;
+    cin>>q;
+    while(q--)
     {
-        int n;
+        int n,x,rem=1;
         cin>>n;
-        vector<int>per;
-        if(n<4)
+        int a[200005]= {0},pos[n+1];
+        dom(i,n)
         {
-            cout << "-1\n";
-            continue;
+            cin>>pos[i];
+            a[pos[i]]++;
         }
-        per.push_back(3);
-        per.push_back(1);
-        per.push_back(4);
-        per.push_back(2);
-        if(n>4)
+        sort(pos+1,pos+1+n);
+        a[0]=1;
+        dom(i,200004)
         {
-            for(int i=5; i<=n; i++)
+            a[i]+=a[i-1];
+        }
+        for(int i=n;i>=1;i--)
+        {
+            if(a[i]-1>=pos[i])
             {
-                if(i%2==0)
-                    per.push_back(i);
-                else
-                    per.insert(per.begin(),i);
+                rem+=i;
+                break;
             }
         }
-        com(i,per.size())
-        {
-            cout << per[i] << " ";
-        }
-        cout << endl;
+        cout << rem << endl;
     }
 }

@@ -14,24 +14,37 @@ using namespace std;
 map<ll,ll>mp;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    int q;
+    cin>>q;
+    com(i,q)
     {
-        ll n,x=0,sec=0,flag=0;
+        int n,y;
         cin>>n;
-        ll a[n];
-        com(i,n) cin>>a[i];
-        sec=a[0];
-        flag=0;
-        dom(i,n-1)
+        int a[200],con[200],pos[200];
+        dom(i,n)
         {
-            sec=max(sec,a[i]);
-            if(sec-a[i])
+            cin>>a[i];
+            pos[a[i]]=i;
+            con[i]=0;
+        }
+        y=n-1;
+        dom(i,n)
+        {
+            if(y<=0)
+                break;
+            for(int j=pos[i]; j>=1; j--)
             {
-                 flag=max(flag,(ll)(log2(sec-a[i])+1));
+                if(a[j]<a[j-1] && con[j]==0)
+                {
+                    swap(a[j],a[j-1]);
+                    y--;
+                    con[j]=1;
+                }
+                else
+                    break;
             }
         }
-        cout << flag << endl;
+        dom(i,n) cout << a[i] << " ";
+        cout << endl;
     }
 }
