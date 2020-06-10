@@ -19,17 +19,26 @@ int main()
     cin>>t;
     com(i,t)
     {
-        long double l,d,v,g,r,x=0,time=0,div;
-        cin>>l>>d>>v>>g>>r;
-        time=d/v;
-        div=t-round(t/(g+r)*(g+r));
-        while(div<0)
-            div+=g+r;
-        while(div>0)
-            div-g+r;
-        if(div>g-1e-12)
-            t=t-div+g+r;
-        time+=(l-d)/v;
-        cout << fixed << setprecision(12) << time << endl;
+        double n,d;
+        cin>>n>>d;
+        if(d<=n)
+            cout << "YES\n";
+        else
+        {
+            int flag=0;
+            dom(i,n-1)
+            {
+                double con=ceil(d/((double)i+(double)1));
+                //cout << con << " ";
+                if(i+(int)con<=n)
+                {
+                    cout << "YES\n";
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0)
+                cout << "NO\n";
+        }
     }
 }

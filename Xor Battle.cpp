@@ -13,23 +13,44 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+void solve()
+{
+    int n;
+    cin>>n;
+    vector<ll>a(n);
+    com(i,n)
+    {
+        cin>>a[i];
+    }
+    string s;
+    cin>>s;
+    vector<ll>b;
+    mom(i,n-1)
+    {
+        ll v=a[i];
+        for(auto x:b)
+        {
+            v=min(v,v^x);
+        }
+        if(v)
+        {
+            if(s[i]=='1')
+            {
+                cout << 1 << endl;
+                return;
+            }
+            b.push_back(v);
+        }
+    }
+    cout << 0 << endl;
+}
+
 int main()
 {
     int t;
-    cin>>t;
-    com(i,t)
+    cin >> t;
+    while (t--)
     {
-        long double l,d,v,g,r,x=0,time=0,div;
-        cin>>l>>d>>v>>g>>r;
-        time=d/v;
-        div=t-round(t/(g+r)*(g+r));
-        while(div<0)
-            div+=g+r;
-        while(div>0)
-            div-g+r;
-        if(div>g-1e-12)
-            t=t-div+g+r;
-        time+=(l-d)/v;
-        cout << fixed << setprecision(12) << time << endl;
+        solve();
     }
 }

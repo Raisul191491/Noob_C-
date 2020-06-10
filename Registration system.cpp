@@ -13,23 +13,24 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+map<string,int>mp;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    int n;
+    cin>>n;
+    com(i,n)
     {
-        long double l,d,v,g,r,x=0,time=0,div;
-        cin>>l>>d>>v>>g>>r;
-        time=d/v;
-        div=t-round(t/(g+r)*(g+r));
-        while(div<0)
-            div+=g+r;
-        while(div>0)
-            div-g+r;
-        if(div>g-1e-12)
-            t=t-div+g+r;
-        time+=(l-d)/v;
-        cout << fixed << setprecision(12) << time << endl;
+        string s;
+        cin>>s;
+        if(mp[s]==0)
+        {
+            mp[s]++;
+            cout << "OK" << endl;
+        }
+        else
+        {
+            cout << s << mp[s] << endl;
+            mp[s]++;
+        }
     }
 }

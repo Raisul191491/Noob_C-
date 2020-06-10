@@ -15,21 +15,25 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    int n,k,sum=0,con=0,x;
+    cin>>n>>k;
+    int a[n+5],cum[k];
+    com(i,n)
     {
-        long double l,d,v,g,r,x=0,time=0,div;
-        cin>>l>>d>>v>>g>>r;
-        time=d/v;
-        div=t-round(t/(g+r)*(g+r));
-        while(div<0)
-            div+=g+r;
-        while(div>0)
-            div-g+r;
-        if(div>g-1e-12)
-            t=t-div+g+r;
-        time+=(l-d)/v;
-        cout << fixed << setprecision(12) << time << endl;
+        cin>>a[i];
+        con+=a[i];
     }
+    com(i,k)
+    {
+        cin>>x;
+        con-=a[x-1];
+        sum+=con*a[x-1];
+        a[x-1]=0;
+    }
+    com(i,n)
+    {
+        sum+=(a[i]*a[(i+1)%n]);
+        //cout << a[i] << endl;
+    }
+    cout << sum << endl;
 }

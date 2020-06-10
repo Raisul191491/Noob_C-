@@ -17,19 +17,37 @@ int main()
 {
     int t;
     cin>>t;
-    com(i,t)
+    while(t--)
     {
-        long double l,d,v,g,r,x=0,time=0,div;
-        cin>>l>>d>>v>>g>>r;
-        time=d/v;
-        div=t-round(t/(g+r)*(g+r));
-        while(div<0)
-            div+=g+r;
-        while(div>0)
-            div-g+r;
-        if(div>g-1e-12)
-            t=t-div+g+r;
-        time+=(l-d)/v;
-        cout << fixed << setprecision(12) << time << endl;
+        ll n,one=0,zer=0;
+        cin>>n;
+        ll a[n],b[n];
+        com(i,n)
+        {
+            cin>>a[i];
+        }
+        com(i,n)
+        {
+            cin>>b[i];
+            if(b[i]==1)
+                one++;
+            else
+                zer++;
+        }
+        int flag=1;
+        for(int i=0; i<n-1; i++)
+        {
+            if(a[i]>a[i+1])
+                flag=0;
+        }
+        if(flag)
+            cout << "Yes\n";
+        else
+        {
+             if(one==0 || zer==0)
+               cout << "No\n";
+             else
+               cout << "Yes\n";
+        }
     }
 }

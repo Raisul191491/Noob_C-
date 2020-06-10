@@ -15,21 +15,33 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    fast
+    int n,flag=1;
+    cin>>n;
+    vector<char>s;
+    s.push_back('0');
+    com(i,n)
     {
-        long double l,d,v,g,r,x=0,time=0,div;
-        cin>>l>>d>>v>>g>>r;
-        time=d/v;
-        div=t-round(t/(g+r)*(g+r));
-        while(div<0)
-            div+=g+r;
-        while(div>0)
-            div-g+r;
-        if(div>g-1e-12)
-            t=t-div+g+r;
-        time+=(l-d)/v;
-        cout << fixed << setprecision(12) << time << endl;
+         char c;
+         cin>>c;
+         s.push_back(c);
     }
+    s.push_back('0');
+    for(int i=1; i<=n; i++)
+    {
+        if(s[i]=='1' && (s[i-1]=='1' || s[i+1]=='1'))
+        {
+            flag=0;
+            cout << "No\n";
+            break;
+        }
+        else if(s[i]=='0' && s[i-1]=='0' && s[i+1]=='0')
+        {
+            flag=0;
+            cout << "No\n";
+            break;
+        }
+    }
+    if(flag)
+        cout << "Yes\n";
 }
