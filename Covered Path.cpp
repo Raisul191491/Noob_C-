@@ -18,24 +18,29 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     float k,x,y,d,c=0;
-     int n;
-     cin>>n>>k;
-     int a[n],b[n];
-     cin>>x>>y;
-     for(int i=0;i<n-1;i++)
+     int v1,v2,dis=0;
+     cin>>v1>>v2;
+     int t,d,dif=0;
+     cin>>t>>d;
+     vector<ll>pos(t+1);
+     pos[1]=v1;
+     pos[t]=v2;
+     for(int i=2;i<t;i++)
      {
-          cin>>a[i]>>b[i];
+          pos[i]=pos[i-1]+d;
      }
-     for(int i=0;i<n-1;i++)
+     for(int i=t-1;i>1;i--)
      {
-          x=abs(x-a[i]);
-          y=abs(y-b[i]);
-          d=sqrt(x*x+y*y);
-          c+=d;
-          x=a[i];
-          y=b[i];
+          dif=pos[i]-pos[i+1];
+          //cout << dif << endl;
+          if(dif>d)
+               pos[i]=pos[i+1]+d;
+          else
+               break;
      }
-     k=(c/50)*k;
-     cout << fixed << setprecision(10) << k << endl;
+     dom(i,t)
+     {
+          dis+=pos[i];
+     }
+     cout << dis << endl;
 }

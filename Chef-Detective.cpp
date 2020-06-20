@@ -16,26 +16,20 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+map<ll,ll>mp;
 int main()
 {
-     float k,x,y,d,c=0;
      int n;
-     cin>>n>>k;
-     int a[n],b[n];
-     cin>>x>>y;
-     for(int i=0;i<n-1;i++)
+     cin>>n;
+     int x;
+     com(i,n)
      {
-          cin>>a[i]>>b[i];
+          cin>>x;
+          mp[x]++;
      }
-     for(int i=0;i<n-1;i++)
+     dom(i,n)
      {
-          x=abs(x-a[i]);
-          y=abs(y-b[i]);
-          d=sqrt(x*x+y*y);
-          c+=d;
-          x=a[i];
-          y=b[i];
+          if(mp[i]==0)
+               cout << i << " ";
      }
-     k=(c/50)*k;
-     cout << fixed << setprecision(10) << k << endl;
 }

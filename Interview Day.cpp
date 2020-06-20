@@ -30,6 +30,6 @@ int main()
         if(div>g-1e-12)
             t=t-div+g+r;
         time+=(l-d)/v;
-        cout << fixed << setprecision(12) << time << endl;
+        cout << time << endl;
     }
 }

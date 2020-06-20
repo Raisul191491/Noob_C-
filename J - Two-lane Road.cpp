@@ -19,31 +19,42 @@ int main()
     cin>>t;
     while(t--)
     {
-        string s;
-        cin>>s;
-        int one=0,zero=0,cnt=0;
-        com(i,s.size())
+        int n,k,d,y;
+        cin>>n>>k>>d;
+        vector<pair<int,int>>pos(n);
+        com(i,n)
         {
-            if(s[i]=='1')
-                one++;
-            else
-                zero++;
+            int x;
+            cin>>x;
+            pos[i].fr=x;
         }
-        if(one==0 || zero==0 || s.size()<3)
-            cout << "0" << endl;
-        else
+        com(i,n)
         {
-            cnt=min(one,zero);
-            int x=0,y=0,pos=0,con=0;
-            for(auto i:s)
+            int x;
+            cin>>x;
+            pos[i].sc=x;
+        }
+        sortvi(pos);
+        int dis=k,con=0;
+        for(int i=1; i<pos.size(); i++)
+        {
+            if(pos[i].sc!=pos[i-1].sc)
             {
-                 if(i=='1') pos++;
-                 else con++;
-                 x=pos+zero-con;
-                 y=con+one-pos;
-                 cnt=min(min(x,y),cnt);
+                if(pos[i-1].fr+1==pos[i].fr || pos[i].fr<=con)
+                {
+                     dis=pos[i].fr;
+                }
+                else
+                {
+                     con=max(pos[i-1].fr+1,con);
+                     con+=d;
+                }
             }
-            cout << cnt << endl;
+            if(dis!=k)
+               break;
         }
+        cout << dis << endl;
     }
 }
+
+

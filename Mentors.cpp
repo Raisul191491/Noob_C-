@@ -1,6 +1,3 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize ("unroll-loops")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
@@ -16,26 +13,33 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+map<ll,ll>mp;
 int main()
 {
-     float k,x,y,d,c=0;
-     int n;
-     cin>>n>>k;
-     int a[n],b[n];
-     cin>>x>>y;
-     for(int i=0;i<n-1;i++)
-     {
-          cin>>a[i]>>b[i];
-     }
-     for(int i=0;i<n-1;i++)
-     {
-          x=abs(x-a[i]);
-          y=abs(y-b[i]);
-          d=sqrt(x*x+y*y);
-          c+=d;
-          x=a[i];
-          y=b[i];
-     }
-     k=(c/50)*k;
-     cout << fixed << setprecision(10) << k << endl;
+    int n,k;
+    cin>>n>>k;
+    int a[n+1],b[n+1]={0};
+    dom(i,n)
+    {
+        cin>>a[i];
+        b[i]=a[i];
+    }
+    com(i,k)
+    {
+        int x,y;
+        cin>>x>>y;
+        if(a[x]!=a[y])
+        {
+            if(a[y]>a[x])
+                mp[y]++;
+            else if(a[x]>a[y])
+                mp[x]++;
+        }
+    }
+    sort(b+1,b+1+n);
+    dom(i,n)
+    {
+         int y=lower_bound(b,b+n,a[i])-b;
+         cout << y-mp[i]-1 << " ";
+    }
 }

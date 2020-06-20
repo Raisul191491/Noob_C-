@@ -15,9 +15,9 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int n,k,sum=0,con=0,x;
+    ll n,k,sum=0,con=0,x;
     cin>>n>>k;
-    int a[n+5],cum[k];
+    ll a[n+5],cum[k];
     com(i,n)
     {
         cin>>a[i];

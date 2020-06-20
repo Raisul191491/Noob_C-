@@ -1,6 +1,3 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize ("unroll-loops")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
@@ -18,24 +15,32 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     float k,x,y,d,c=0;
-     int n;
-     cin>>n>>k;
-     int a[n],b[n];
-     cin>>x>>y;
-     for(int i=0;i<n-1;i++)
-     {
-          cin>>a[i]>>b[i];
-     }
-     for(int i=0;i<n-1;i++)
-     {
-          x=abs(x-a[i]);
-          y=abs(y-b[i]);
-          d=sqrt(x*x+y*y);
-          c+=d;
-          x=a[i];
-          y=b[i];
-     }
-     k=(c/50)*k;
-     cout << fixed << setprecision(10) << k << endl;
+    int n,flag=0;
+    cin>>n;
+    int a[n];
+    com(i,n)
+    {
+        cin>>a[i];
+    }
+    cin.ignore();
+    string s;
+    com(i,n)
+    {
+        getline(cin,s);
+        int cnt=0;
+        for(int j=0;j<s.length();j++)
+        {
+            if(s[j]=='a' || s[j]=='e' || s[j]=='i' || s[j]=='o' || s[j]=='u' || s[j]=='y')
+                cnt++;
+        }
+        if(cnt!=a[i])
+        {
+            flag=1;
+
+        }
+    }
+    if(flag)
+        cout << "NO\n";
+    else
+        cout << "YES\n";
 }

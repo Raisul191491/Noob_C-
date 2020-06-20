@@ -13,37 +13,39 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+map<pair<ll,ll>,ll>mp;
 int main()
 {
     int t;
     cin>>t;
-    while(t--)
+    com(i,t)
     {
-        string s;
-        cin>>s;
-        int one=0,zero=0,cnt=0;
-        com(i,s.size())
+        ll n;
+        cin>>n;
+        if(n==1 || n==4 || n==6)
         {
-            if(s[i]=='1')
-                one++;
-            else
-                zero++;
+            cout << "FastestFinger\n";
         }
-        if(one==0 || zero==0 || s.size()<3)
-            cout << "0" << endl;
-        else
+        else if(n%2 || n==2)
+            cout << "Ashishgup\n";
+        else if(n%2==0)
         {
-            cnt=min(one,zero);
-            int x=0,y=0,pos=0,con=0;
-            for(auto i:s)
+            int cnt = 0;
+            for(int i=3; i*i<=n; i+=2)
             {
-                 if(i=='1') pos++;
-                 else con++;
-                 x=pos+zero-con;
-                 y=con+one-pos;
-                 cnt=min(min(x,y),cnt);
+                while(n%i==0)
+                {
+                    cnt++;
+                    n/=i;
+                }
             }
-            cout << cnt << endl;
+            if(n!=1)
+                cnt++;
+            if(cnt>1)
+                cout<<"Ashishgup\n";
+            else
+                cout<<"FastestFinger\n";
         }
+
     }
 }

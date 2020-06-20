@@ -13,37 +13,43 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+map<ll,ll>mp;
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
+    int n,cnt=0;
+    cin>>n;
+    int x[n],y[n];
+    com(i,n)
     {
-        string s;
-        cin>>s;
-        int one=0,zero=0,cnt=0;
-        com(i,s.size())
+        cin>>x[i]>>y[i];
+    }
+    com(i,n)
+    {
+        if(x[i]==5)
+            continue;
+        if(mp[x[i]-y[i]]==0)
         {
-            if(s[i]=='1')
-                one++;
-            else
-                zero++;
-        }
-        if(one==0 || zero==0 || s.size()<3)
-            cout << "0" << endl;
-        else
-        {
-            cnt=min(one,zero);
-            int x=0,y=0,pos=0,con=0;
-            for(auto i:s)
+            //cout << x[i] << endl;
+            if(x[i]-y[i]>x[i-1] || i==0)
             {
-                 if(i=='1') pos++;
-                 else con++;
-                 x=pos+zero-con;
-                 y=con+one-pos;
-                 cnt=min(min(x,y),cnt);
+                //cout << x[i]-y[i] << endl;
+                cnt++;
+                mp[x[i]-y[i]]=1;
+                continue;
             }
-            cout << cnt << endl;
+        }
+        if(mp[x[i]+y[i]]==0)
+        {
+            if(x[i]+y[i]<x[i+1] || i==n-1)
+            {
+                //cout << x[i]+y[i] << endl;
+                cnt++;
+                mp[x[i]+y[i]]=1;
+                continue;
+            }
         }
     }
+
+//cout << mp[-1] << endl;
+    cout << cnt << endl;
 }

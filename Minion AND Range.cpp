@@ -15,35 +15,41 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int t;
+    ll t;
     cin>>t;
-    while(t--)
+    com(i,t)
     {
-        string s;
-        cin>>s;
-        int one=0,zero=0,cnt=0;
-        com(i,s.size())
+        ll n,q;
+        cin>>n;
+        ll a[n+1],b[n+1]= {0};
+        dom(i,n)
         {
-            if(s[i]=='1')
-                one++;
-            else
-                zero++;
-        }
-        if(one==0 || zero==0 || s.size()<3)
-            cout << "0" << endl;
-        else
-        {
-            cnt=min(one,zero);
-            int x=0,y=0,pos=0,con=0;
-            for(auto i:s)
+            cin>>a[i];
+            if(a[i]%2)
             {
-                 if(i=='1') pos++;
-                 else con++;
-                 x=pos+zero-con;
-                 y=con+one-pos;
-                 cnt=min(min(x,y),cnt);
+                b[i]=b[i-1];
             }
-            cout << cnt << endl;
+            else
+            {
+                b[i]=b[i-1]+1;
+            }
         }
+        cin>>q;
+        com(i,q)
+        {
+            ll l,r;
+            cin>>l>>r;
+            if(a[l]%2==0 || a[r]%2==0)
+                cout << "EVEN" << endl;
+            else
+            {
+                ll dif=b[r]-b[l];
+                if(dif)
+                    cout << "EVEN"<< endl;
+                else
+                    cout << "ODD" << endl;
+            }
+        }
+
     }
 }

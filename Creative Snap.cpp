@@ -1,6 +1,3 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize ("unroll-loops")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
@@ -16,26 +13,35 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+ll n,k,a,b;
+ll con[100005];
+
+ll solve(ll sta,ll en)
+{
+    ll low=lower_bound(con,con+k,sta)-con;
+    ll high=upper_bound(con,con+k,en)-con;
+    ll cnt=high-low;
+    //cout << cnt << endl;
+    if(!cnt)
+        return a;
+    ll po=(ll)1*b*cnt*(en-sta+1);
+    if(sta<en)
+    {
+         ll mid=(sta+en)/2;
+         po=min(po,solve(sta,mid)+solve(mid+1,en));
+    }
+    return po;
+}
+
 int main()
 {
-     float k,x,y,d,c=0;
-     int n;
-     cin>>n>>k;
-     int a[n],b[n];
-     cin>>x>>y;
-     for(int i=0;i<n-1;i++)
-     {
-          cin>>a[i]>>b[i];
-     }
-     for(int i=0;i<n-1;i++)
-     {
-          x=abs(x-a[i]);
-          y=abs(y-b[i]);
-          d=sqrt(x*x+y*y);
-          c+=d;
-          x=a[i];
-          y=b[i];
-     }
-     k=(c/50)*k;
-     cout << fixed << setprecision(10) << k << endl;
+    cin>>n>>k>>a>>b;
+    com(i,k)
+    {
+        cin>>con[i];
+        con[i]--;
+    }
+    sortI(con,k);
+    ll dam=solve(0,(1<<n)-1);
+    cout << dam << endl;
 }

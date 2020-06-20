@@ -1,6 +1,3 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize ("unroll-loops")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
@@ -18,24 +15,19 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     float k,x,y,d,c=0;
+     int a,b,c,mon=0;
+     cin>>a>>b>>c;
      int n;
-     cin>>n>>k;
-     int a[n],b[n];
-     cin>>x>>y;
-     for(int i=0;i<n-1;i++)
+     cin>>n;
+     int pos[n];
+     com(i,n)
      {
-          cin>>a[i]>>b[i];
+          cin>>pos[i];
      }
-     for(int i=0;i<n-1;i++)
+     com(i,n)
      {
-          x=abs(x-a[i]);
-          y=abs(y-b[i]);
-          d=sqrt(x*x+y*y);
-          c+=d;
-          x=a[i];
-          y=b[i];
+          if(pos[i]>b && pos[i]<c)
+               mon++;
      }
-     k=(c/50)*k;
-     cout << fixed << setprecision(10) << k << endl;
+     cout << mon << endl;
 }

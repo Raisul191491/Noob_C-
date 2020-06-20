@@ -15,57 +15,60 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int x,y,cnt=0,con=1;
-    cin>>x>>y;
-    x=x*100;
-    y*=10;
-    while(1)
+    int t;
+    cin>>t;
+    com(i,t)
     {
-        int sum=0;
-        if(con%2)
+        ll n,mx=0,cnt=-1,dif=0,str=0,beg=0;
+        bool flag=0;
+        cin>>n;
+        int a[n],b[n];
+        for(int i=0; i<n; i++)
+            cin>>a[i];
+        for(int i=0; i<n; i++)
+            cin>>b[i];
+        com(i,n)
         {
-            sum=min(200,x);
-            x-=sum;
-            if(220-sum<=y)
+            if(a[i]>b[i])
             {
-                y-=220-sum;
-            }
-            else
-            {
-                cout << "Hanako\n";
+                flag=1;
                 break;
             }
         }
+        if(flag)
+        {
+            cout << "NO" << endl;
+            continue;
+        }
+        com(i,n)
+        {
+            if(a[i]!=b[i])
+            {
+                dif=b[i]-a[i];
+                str=i;
+                break;
+            }
+        }
+        for(int j=n-1; j>=0; j--)
+        {
+            if(a[j]!=b[j])
+            {
+                beg=j;
+                break;
+            }
+        }
+        for(int k=str; k<=beg; k++)
+        {
+            mx=b[k]-a[k];
+            if(mx!=dif)
+            {
+                flag=1;
+                break;
+            }
+        }
+        if(flag)
+            cout << "NO" << endl;
         else
-        {
-            sum=min(220,y);
-            if(sum==220)
-                y-=220;
-            else if(sum<220 && sum>=120)
-            {
-                sum=120;
-                y-=120;
-            }
-            else if(sum<120 && sum>=20)
-            {
-                sum=20;
-                y-=20;
-            }
-            else
-            {
-                cout << "Ciel\n";
-                break;
-            }
-            if(220-sum>x)
-            {
-                cout << "Ciel\n";
-                break;
-            }
-            else
-            {
-                x-=220-sum;
-            }
-        }
-        con++;
+            cout << "YES" << endl;
     }
 }

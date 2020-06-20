@@ -13,37 +13,55 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+/*
+even xor odd = odd
+even xor even = even
+odd xor odd = even
+odd xor even = odd
+*/
+void solve()
+{
+    ll n,q,odd=0;
+    cin>>n>>q;
+    int x;
+    for(int i=0; i<n; i++)
+    {
+        cin>>x;
+        int cnt=0;
+        while(x)
+        {
+            if(x&1)
+                cnt++;
+            x=x>>1;
+        }
+        if(cnt&1)
+            odd++;
+    }
+
+    for(int i=0; i<q; i++)
+    {
+        int p;
+        cin>>p;
+        int cnt=0;
+        while(p)
+        {
+            if(p&1)
+                cnt++;
+            p=p>>1;
+        }
+        if(cnt&1)
+            cout << odd << " " << n-odd << endl;
+        else
+            cout << n-odd << " " << odd << endl;
+    }
+}
+
 int main()
 {
     int t;
     cin>>t;
-    while(t--)
+    com(i,t)
     {
-        string s;
-        cin>>s;
-        int one=0,zero=0,cnt=0;
-        com(i,s.size())
-        {
-            if(s[i]=='1')
-                one++;
-            else
-                zero++;
-        }
-        if(one==0 || zero==0 || s.size()<3)
-            cout << "0" << endl;
-        else
-        {
-            cnt=min(one,zero);
-            int x=0,y=0,pos=0,con=0;
-            for(auto i:s)
-            {
-                 if(i=='1') pos++;
-                 else con++;
-                 x=pos+zero-con;
-                 y=con+one-pos;
-                 cnt=min(min(x,y),cnt);
-            }
-            cout << cnt << endl;
-        }
+        solve();
     }
 }

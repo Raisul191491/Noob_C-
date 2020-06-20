@@ -18,24 +18,30 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     float k,x,y,d,c=0;
-     int n;
-     cin>>n>>k;
-     int a[n],b[n];
-     cin>>x>>y;
-     for(int i=0;i<n-1;i++)
-     {
-          cin>>a[i]>>b[i];
-     }
-     for(int i=0;i<n-1;i++)
-     {
-          x=abs(x-a[i]);
-          y=abs(y-b[i]);
-          d=sqrt(x*x+y*y);
-          c+=d;
-          x=a[i];
-          y=b[i];
-     }
-     k=(c/50)*k;
-     cout << fixed << setprecision(10) << k << endl;
+    int n,cnt=0;
+    cin>>n;
+    int a[n],mx=0,mn=0;
+    com(i,n)
+    {
+        cin>>a[i];
+    }
+    com(i,n)
+    {
+        if(a[i]<mn)
+            cnt++;
+        else if(a[i]>mn || a[i]>mx)
+        {
+            //cout << mn << " " << mx << endl;
+            if(a[i]>mx)
+            {
+                mn=mx;
+                mx=a[i];
+            }
+            else
+            {
+                 mn=a[i];
+            }
+        }
+    }
+    cout << cnt << endl;
 }

@@ -16,26 +16,29 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
+map<pair<ll,ll>,ll>mp;
 int main()
 {
-     float k,x,y,d,c=0;
-     int n;
-     cin>>n>>k;
-     int a[n],b[n];
-     cin>>x>>y;
-     for(int i=0;i<n-1;i++)
+     ll n,s1,s2,pos,con,mx=-1;
+     cin>>n>>s1>>s2;
+     com(i,n)
      {
-          cin>>a[i]>>b[i];
+          ll x,y;
+          cin>>x>>y;
+          if(x<=s1-1) mp[{s1-1,s2}]++;
+          else if(x>=s1+1) mp[{s1+1,s2}]++;
+          if(y<=s2-1) mp[{s1,s2-1}]++;
+          else if(y>=s2+1) mp[{s1,s2+1}]++;
      }
-     for(int i=0;i<n-1;i++)
+     for(auto x:mp)
      {
-          x=abs(x-a[i]);
-          y=abs(y-b[i]);
-          d=sqrt(x*x+y*y);
-          c+=d;
-          x=a[i];
-          y=b[i];
+          if(x.sc>mx)
+          {
+               mx=x.sc;
+               con=x.fr.fr;
+               pos=x.fr.sc;
+          }
      }
-     k=(c/50)*k;
-     cout << fixed << setprecision(10) << k << endl;
+     cout << mx << endl;
+     cout << con << " " << pos << endl;
 }
