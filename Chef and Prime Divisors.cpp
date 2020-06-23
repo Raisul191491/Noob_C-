@@ -1,3 +1,6 @@
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize ("unroll-loops")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
@@ -13,25 +16,33 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
-map<ll,ll>mp;
 int main()
 {
-    int n,cnt=0;
-    cin>>n;
-    int x[n],y[n];
-    com(i,n)
+    int t;
+    cin>>t;
+    com(i,t)
     {
-        cin>>x[i]>>y[i];
-    }
-    com(i,n)
-    {
-        if(x[i]-x[i-1]>y[i] || i==0)
-            cnt++;
-        else if(x[i+1]-x[i]>y[i] || i==n-1)
+        ll a,b,gc;
+        cin>>a>>b;
+        while(1)
         {
-            cnt++;
-            x[i]=x[i]+y[i];
+            if(b==1)
+            {
+                cout << "Yes\n";
+                break;
+            }
+            gc=__gcd(a,b);
+            if(gc==1)
+            {
+                if(b==1)
+                {
+                    cout << "Yes\n";
+                    break;
+                }
+                cout << "No\n";
+                break;
+            }
+            b/=gc;
         }
     }
-    cout << cnt << endl;
 }

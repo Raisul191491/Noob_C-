@@ -1,3 +1,6 @@
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize ("unroll-loops")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
@@ -16,22 +19,10 @@ using namespace std;
 map<ll,ll>mp;
 int main()
 {
-    int n,cnt=0;
-    cin>>n;
-    int x[n],y[n];
-    com(i,n)
-    {
-        cin>>x[i]>>y[i];
-    }
-    com(i,n)
-    {
-        if(x[i]-x[i-1]>y[i] || i==0)
-            cnt++;
-        else if(x[i+1]-x[i]>y[i] || i==n-1)
-        {
-            cnt++;
-            x[i]=x[i]+y[i];
-        }
-    }
-    cout << cnt << endl;
+     char s;
+     cin>>s;
+     if(s<96)
+          cout << "A\n";
+     else
+          cout << "a\n";
 }

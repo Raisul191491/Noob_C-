@@ -12,26 +12,23 @@ typedef long long     ll;
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
+#define endl          '\n'
 using namespace std;
-map<ll,ll>mp;
 int main()
 {
-    int n,cnt=0;
-    cin>>n;
-    int x[n],y[n];
-    com(i,n)
-    {
-        cin>>x[i]>>y[i];
-    }
-    com(i,n)
-    {
-        if(x[i]-x[i-1]>y[i] || i==0)
-            cnt++;
-        else if(x[i+1]-x[i]>y[i] || i==n-1)
-        {
-            cnt++;
-            x[i]=x[i]+y[i];
-        }
-    }
-    cout << cnt << endl;
+     ll n,x,y;
+     cin>>n;
+     ll cnt=1,sta=0,en=0,con=0,mx,mn;
+     com(i,n)
+     {
+          cin>>x>>y;
+          mx=max(sta,en);
+          mn=min(x,y);
+          cnt+=max(mn-mx+1,0LL);
+          if(sta==en)
+               cnt--;
+          sta=x;
+          en=y;
+     }
+     cout << cnt << endl;
 }

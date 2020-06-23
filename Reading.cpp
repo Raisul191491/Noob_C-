@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define last          freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fr            first
 #define sc            second
 #define com(i,n)      for(int i=0;i<n;i++)
@@ -12,26 +13,23 @@ typedef long long     ll;
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
+#define endl          '\n'
 using namespace std;
-map<ll,ll>mp;
+vector<pair<int,int>>pos;
 int main()
 {
-    int n,cnt=0;
-    cin>>n;
-    int x[n],y[n];
-    com(i,n)
-    {
-        cin>>x[i]>>y[i];
-    }
-    com(i,n)
-    {
-        if(x[i]-x[i-1]>y[i] || i==0)
-            cnt++;
-        else if(x[i+1]-x[i]>y[i] || i==n-1)
-        {
-            cnt++;
-            x[i]=x[i]+y[i];
-        }
-    }
-    cout << cnt << endl;
+     last
+     int n,k,x;
+     cin>>n>>k;
+     com(i,n)
+     {
+          cin>>x;
+          pos.push_back({x,i+1});
+     }
+     sortvi(pos);
+     cout << pos[n-k].fr << endl;
+     com(i,k)
+     {
+          cout << pos[n-1-i].sc << " ";
+     }
 }

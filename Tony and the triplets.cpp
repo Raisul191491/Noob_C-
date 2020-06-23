@@ -21,7 +21,7 @@ int main()
      {
           ll n;
           cin>>n;
-          if(n<=2) cout << 3 << endl;
-          else cout << 6 << endl;
+          int cnt=(n+2)*(n+1)/2;
+          cout << cnt << endl;
      }
 }

@@ -16,22 +16,23 @@ using namespace std;
 map<ll,ll>mp;
 int main()
 {
-    int n,cnt=0;
+    ll n,sum=0,x,y;
     cin>>n;
-    int x[n],y[n];
+    ll a[n];
     com(i,n)
     {
-        cin>>x[i]>>y[i];
+        cin>>a[i];
+        mp[a[i]]++;
+        sum+=a[i];
     }
-    com(i,n)
+    int q;
+    com(i,q)
     {
-        if(x[i]-x[i-1]>y[i] || i==0)
-            cnt++;
-        else if(x[i+1]-x[i]>y[i] || i==n-1)
-        {
-            cnt++;
-            x[i]=x[i]+y[i];
-        }
+        cin>>x>>y;
+        mp[y]+=mp[x];
+        sum-=(mp[x]*x);
+        sum+=(mp[x]*y);
+        mp[x]=0;
+        cout << sum << endl;
     }
-    cout << cnt << endl;
 }

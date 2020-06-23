@@ -13,25 +13,38 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
-map<ll,ll>mp;
 int main()
 {
-    int n,cnt=0;
-    cin>>n;
-    int x[n],y[n];
-    com(i,n)
+    int t;
+    cin >>t;
+    com(i,t)
     {
-        cin>>x[i]>>y[i];
-    }
-    com(i,n)
-    {
-        if(x[i]-x[i-1]>y[i] || i==0)
-            cnt++;
-        else if(x[i+1]-x[i]>y[i] || i==n-1)
+        int n,m;
+        cin >> n >> m;
+        map<ll,ll>mp;
+        vector<int> a(n);
+        com(j,n)
+            cin >> a[j];
+        sortvi(a);
+        for(int j=0; j<=n; j++)
         {
-            cnt++;
-            x[i]=x[i]+y[i];
+            mp[j]=0;
         }
+        com(j,n)
+        {
+            mp[a[j]]++;
+        }
+        int flag=0;
+        for(int j=1; j<m; j++)
+        {
+            if(mp[j]==0)
+            {
+                cout << -1 << std::endl;
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0)
+            cout << n-mp[m] << "\n";
     }
-    cout << cnt << endl;
 }

@@ -13,41 +13,31 @@ typedef long long     ll;
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
 using namespace std;
-map<pair<ll,ll>,ll>mp;
 int main()
 {
      int t;
      cin>>t;
      com(i,t)
      {
-          int n,x,cnt,y=0;
-          cin>>n;
-          cnt=n-1;
-          vector<ll>odd,eve;
-          com(i,2*n)
+          ll n,c,mx=-1,sta,beg;
+          cin>>n>>c;
+          map<pair<ll,ll>,ll>mp;
+          vector<pair<ll,ll>>pos;
+          com(i,n)
           {
-               cin>>x;
-               if(x&1)
-                    odd.push_back(i+1);
-               else
-                    eve.push_back(i+1);
+               int x,y;
+               pos.push_back({x,y});
+               cin>>x>>y;
+               mp[{x+c,y+c}]++;
+               mp[{x-c,y-c}]++;
           }
-          int l=odd.size(),r=eve.size();
-          while(l>1 && cnt>0)
+          for(auto a:mp)
           {
-               cout << odd[y] << " " << odd[y+1] << endl;
-               y+=2;
-               cnt--;
-               l-=2;
-               //cout << cnt << endl;
-          }
-          y=0;
-          while(r>1 && cnt>0)
-          {
-               cout << eve[y] << " " << eve[y+1] << endl;
-               y+=2;
-               cnt--;
-               r-=2;
+               if(a>mx)
+               {
+                    sta=a.fr.fr;
+                    beg=a.fr.sc;
+               }
           }
      }
 }

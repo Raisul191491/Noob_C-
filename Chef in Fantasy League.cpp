@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define last          freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fr            first
 #define sc            second
 #define com(i,n)      for(int i=0;i<n;i++)
@@ -12,42 +13,38 @@ typedef long long     ll;
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
 #define pi            3.14159265358979323846264338327950
+#define endl          '\n'
 using namespace std;
-map<pair<ll,ll>,ll>mp;
 int main()
 {
      int t;
      cin>>t;
      com(i,t)
      {
-          int n,x,cnt,y=0;
-          cin>>n;
-          cnt=n-1;
-          vector<ll>odd,eve;
-          com(i,2*n)
+          ll n,s;
+          cin>>n>>s;
+          vector<ll>pos,con;
+          ll a[n],b[n];
+          com(i,n)
           {
-               cin>>x;
-               if(x&1)
-                    odd.push_back(i+1);
+               cin>>a[i];
+          }
+          com(i,n)
+          {
+               cin>>b[i];
+               if(b[i])
+                    pos.push_back(a[i]);
                else
-                    eve.push_back(i+1);
+                    con.push_back(a[i]);
           }
-          int l=odd.size(),r=eve.size();
-          while(l>1 && cnt>0)
-          {
-               cout << odd[y] << " " << odd[y+1] << endl;
-               y+=2;
-               cnt--;
-               l-=2;
-               //cout << cnt << endl;
-          }
-          y=0;
-          while(r>1 && cnt>0)
-          {
-               cout << eve[y] << " " << eve[y+1] << endl;
-               y+=2;
-               cnt--;
-               r-=2;
-          }
+          sortvi(pos);
+          sortvi(con);
+          ll lef=100-s;
+          if(pos.size()==0 || con.size()==0)
+               cout << "no\n";
+          else if(pos[0]+con[0]<=lef)
+               cout << "yes\n";
+          else
+               cout << "no\n";
      }
 }

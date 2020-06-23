@@ -31,20 +31,33 @@ int main()
         else if(n%2==0)
         {
             int cnt = 0;
-            for(int i=3; i*i<=n; i+=2)
+            while(n %2 == 0)
             {
-                while(n%i==0)
-                {
-                    cnt++;
-                    n/=i;
-                }
-            }
-            if(n!=1)
+                n/=2;
                 cnt++;
-            if(cnt>1)
+            }
+            if(n == 1)
+                cout<<"FastestFinger\n";
+            else if(cnt > 1)
                 cout<<"Ashishgup\n";
             else
-                cout<<"FastestFinger\n";
+            {
+                int cnt = 0;
+                for(int i=3; i*i<=n; i+=2)
+                {
+                    while(n%i==0)
+                    {
+                        cnt++;
+                        n/=i;
+                    }
+                }
+                if(n!=1)
+                    cnt++;
+                if(cnt>1)
+                    cout<<"Ashishgup\n";
+                else
+                    cout<<"FastestFinger\n";
+            }
         }
 
     }
