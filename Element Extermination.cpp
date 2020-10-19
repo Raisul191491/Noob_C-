@@ -1,8 +1,11 @@
+
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define last          freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fr            first
 #define sc            second
+#define lcm(a,b)      (a*b)/__gcd(a,b)
 #define com(i,n)      for(int i=0;i<n;i++)
 #define dom(i,n)      for(int i=1;i<=n;i++)
 #define mom(i,n)      for(int i=n;i>=0;i--)
@@ -16,30 +19,20 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     fast
-     int n,k,x;
-     cin>>n>>k;
-     deque<int>pos;
-     set<int>con;
-     com(i,n)
+     int t;
+     cin>>t;
+     com(i,t)
      {
-          cin>>x;
-          if(con.count(x))
-               continue;
-          else
+          int n,flag=0,f=0;
+          cin>>n;
+          int a[n];
+          com(i,n)
           {
-               if(pos.size()==k)
-               {
-                    con.erase(pos.back());
-                    pos.pop_back();
-               }
-               pos.push_front(x);
-               con.insert(x);
+               cin>>a[i];
           }
-     }
-     cout << pos.size() << endl;
-     for(auto y:pos)
-     {
-          cout << y << " ";
+          if(a[n-1]>a[0])
+               cout << "YES" << endl;
+          else
+               cout << "NO" << endl;
      }
 }

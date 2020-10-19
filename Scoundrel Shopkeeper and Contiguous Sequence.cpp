@@ -1,8 +1,10 @@
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define last          freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fr            first
 #define sc            second
+#define lcm(a,b)      (a*b)/__gcd(a,b)
 #define com(i,n)      for(int i=0;i<n;i++)
 #define dom(i,n)      for(int i=1;i<=n;i++)
 #define mom(i,n)      for(int i=n;i>=0;i--)
@@ -14,32 +16,31 @@ typedef long long     ll;
 #define pi            3.14159265358979323846264338327950
 #define endl          '\n'
 using namespace std;
+map<ll,ll>mp;
 int main()
 {
      fast
-     int n,k,x;
-     cin>>n>>k;
-     deque<int>pos;
-     set<int>con;
-     com(i,n)
+     int t;
+     cin>>t;
+     dom(j,t)
      {
-          cin>>x;
-          if(con.count(x))
-               continue;
-          else
+          cout << "Case " << j << ": " <<  "Thank You BACS!!! ";
+          ll n,m,sum=0,seq=0,x,mn=-1;
+          cin>>m>>n;
+          com(i,n)
           {
-               if(pos.size()==k)
-               {
-                    con.erase(pos.back());
-                    pos.pop_back();
-               }
-               pos.push_front(x);
-               con.insert(x);
+               cin>>x;
+               sum+=x;
+               if(x-mn==1) seq++;
+               mn=x;
           }
-     }
-     cout << pos.size() << endl;
-     for(auto y:pos)
-     {
-          cout << y << " ";
+          if(sum==m)
+               cout << "Thik ache. ";
+          else
+               cout << "Bojjat dokandar!! ";
+          if(seq)
+               cout << "Yes" << endl;
+          else
+               cout << "No" << endl;
      }
 }

@@ -16,33 +16,44 @@ typedef long long     ll;
 #define pi            3.14159265358979323846264338327950
 #define endl          '\n'
 using namespace std;
+int a[100005];
+bool cmp(int x,int y)
+{
+	return a[x]<a[y];
+}
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
-    {
-        if(y%i==0)
-        {
-            pos.push_back(i);
-            if(y/i!=i)
-            {
-                pos.push_back(y/i);
-            }
-        }
-    }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
-        {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
-        }
-    }
-    cout << cnt << endl;
+     int n,cnt=0,ran;
+     cin>>n;
+     int pos[n+1];
+     vector<int>beg[n+1];
+     dom(i,n)
+     {
+          cin>>a[i];
+          pos[i]=i;
+     }
+     sort(pos+1,pos+1+n,cmp);
+     vector<bool>x(n+1,false);
+     dom(i,n)
+     {
+          if(x[i]) continue;
+          cnt++;
+          ran=i;
+          while(!x[ran])
+          {
+               x[ran]=true;
+               beg[cnt].push_back(ran);
+               ran=pos[ran];
+          }
+     }
+     cout << cnt << endl;
+     dom(i,cnt)
+     {
+          cout << beg[i].size() << " ";
+          com(j,beg[i].size())
+          {
+               cout << beg[i][j] << " ";
+          }
+          cout << endl;
+     }
 }

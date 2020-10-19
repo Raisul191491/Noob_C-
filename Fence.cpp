@@ -2,33 +2,20 @@
 using namespace std;
 int main()
 {
-     int n,k,a;
+     long long n,k,x=0;
+     vector<pair<long long,int>>mn;
      cin>>n>>k;
-     vector<int>fen,sum;
-     for(int i=0;i<n;i++)
+     long long a[n+1]={0};
+     for(int i=1;i<=n;i++)
      {
-          cin>>a;
-          fen.push_back(a);
+          cin>>a[i];
+          a[i]+=a[i-1];
      }
-     for(int i=0;i<n-k+1;i++)
+     for(int i=k;i<=n;i++)
      {
-          a=0;
-          for(int j=i;j<i+k;j++)
-          {
-               a+=fen[j];
-          }
-          sum.push_back(a);
+          mn.push_back({a[i]-a[x],x+1});
+          x++;
      }
-     vector<int>sum2(sum);
-     sort(sum2.begin(),sum2.end());
-     for(int i=0;i<n;i++)
-     {
-          if(sum[i]==sum2[0])
-          {
-               cout<< i+1 << endl;
-               break;
-          }
-          else
-               continue;
-     }
+     sort(mn.begin(),mn.end());
+     cout << mn[0].second << endl;
 }

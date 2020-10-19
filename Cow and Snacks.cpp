@@ -1,8 +1,10 @@
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define last          freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fr            first
 #define sc            second
+#define lcm(a,b)      (a*b)/__gcd(a,b)
 #define com(i,n)      for(int i=0;i<n;i++)
 #define dom(i,n)      for(int i=1;i<=n;i++)
 #define mom(i,n)      for(int i=n;i>=0;i--)
@@ -14,32 +16,44 @@ typedef long long     ll;
 #define pi            3.14159265358979323846264338327950
 #define endl          '\n'
 using namespace std;
-int main()
+ll meX=2e5+10,cnt=0;
+vector<vector<ll>>pos;
+vector<ll>con(meX);
+
+void dfs(int m)
 {
-     fast
-     int n,k,x;
-     cin>>n>>k;
-     deque<int>pos;
-     set<int>con;
-     com(i,n)
+     con[m]=1;
+     for(auto n:pos[m])
      {
-          cin>>x;
-          if(con.count(x))
-               continue;
-          else
+          if(!con[n])
           {
-               if(pos.size()==k)
-               {
-                    con.erase(pos.back());
-                    pos.pop_back();
-               }
-               pos.push_front(x);
-               con.insert(x);
+               dfs(n);
+               cnt++;
           }
      }
-     cout << pos.size() << endl;
-     for(auto y:pos)
+}
+
+
+int main()
+{
+     int n,k;
+     cin>>n>>k;
+     pos.resize(n);
+     com(i,k)
      {
-          cout << y << " ";
+          int x,y;
+          cin>>x>>y;
+          x--;
+          y--;
+          pos[x].push_back(y);
+          pos[y].push_back(x);
      }
+     com(i,n)
+     {
+          if(!con[i])
+          {
+               dfs(i);
+          }
+     }
+     cout << k-cnt << endl;
 }

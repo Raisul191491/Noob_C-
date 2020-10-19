@@ -18,31 +18,44 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    int n;
+    cin>>n;
+    vector<int>pos;
+    pos.push_back(3);
+    pos.push_back(1);
+    pos.push_back(4);
+    pos.push_back(2);
+    if(n>4)
     {
-        if(y%i==0)
+        for(int i=5; i<=n; i++)
         {
-            pos.push_back(i);
-            if(y/i!=i)
-            {
-                pos.push_back(y/i);
-            }
+            if(i&1)
+                pos.insert(pos.begin(),i);
+            else
+                pos.insert(pos.end(),i);
         }
     }
-    com(i,pos.size())
+    if(n==1)
     {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
+        cout << 1 << endl;
+        cout << 1 << endl;
+    }
+    else if(n==2)
+    {
+        cout << 1 << endl;
+        cout << 1 << endl;
+    }
+    else if(n==3)
+    {
+        cout << 2 << endl;
+        cout << "1 3" << endl;
+    }
+    else
+    {
+        cout << n << endl;
+        com(i,n)
         {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
+            cout << pos[i] << " ";
         }
     }
-    cout << cnt << endl;
 }

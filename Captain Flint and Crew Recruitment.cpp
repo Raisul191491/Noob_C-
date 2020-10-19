@@ -18,31 +18,33 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    int t;
+    cin>>t;
+    com(i,t)
     {
-        if(y%i==0)
+        int n;
+        cin>>n;
+        if(n<31)
+            cout << "NO" << endl;
+        else if(n-30==6)
         {
-            pos.push_back(i);
-            if(y/i!=i)
-            {
-                pos.push_back(y/i);
-            }
+            cout<<"YES"<<endl;
+            cout<<5<<" "<<6<<" "<<10<<" "<<15<<endl;
+        }
+        else if(n-30==14)
+        {
+            cout<<"YES"<<endl;
+            cout<<6<<" "<<7<<" "<<10<<" "<<21<<endl;
+        }
+        else if(n-30==10)
+        {
+            cout<<"YES"<<endl;
+            cout<<6<<" "<<9<<" "<<15<<" "<<10<<endl;
+        }
+        else
+        {
+            cout<<"YES"<<endl;
+            cout<<6<<" "<<10<<" "<<14<<" "<<n-30<<endl;
         }
     }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
-        {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
-        }
-    }
-    cout << cnt << endl;
 }

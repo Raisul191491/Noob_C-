@@ -1,8 +1,10 @@
 #include<bits/stdc++.h>
 typedef long long     ll;
 #define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define last          freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fr            first
 #define sc            second
+#define lcm(a,b)      (a*b)/__gcd(a,b)
 #define com(i,n)      for(int i=0;i<n;i++)
 #define dom(i,n)      for(int i=1;i<=n;i++)
 #define mom(i,n)      for(int i=n;i>=0;i--)
@@ -16,30 +18,24 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     fast
-     int n,k,x;
-     cin>>n>>k;
-     deque<int>pos;
-     set<int>con;
+     int n,l,a,brk=0,tim=0,sta=0;
+     cin>>n>>l>>a;
+     vector<int>mp;
+     int pos[n],con[n];
      com(i,n)
      {
-          cin>>x;
-          if(con.count(x))
-               continue;
-          else
-          {
-               if(pos.size()==k)
-               {
-                    con.erase(pos.back());
-                    pos.pop_back();
-               }
-               pos.push_front(x);
-               con.insert(x);
-          }
+          cin>>pos[i]>>con[i];
      }
-     cout << pos.size() << endl;
-     for(auto y:pos)
+     com(i,n)
      {
-          cout << y << " ";
+          tim=pos[i];
+          mp.push_back(tim-sta);
+          sta=tim+con[i];
      }
+     mp.push_back(l-sta);
+     com(i,mp.size())
+     {
+          brk+=mp[i]/a;
+     }
+     cout << brk << endl;
 }

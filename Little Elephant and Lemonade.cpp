@@ -16,33 +16,36 @@ typedef long long     ll;
 #define pi            3.14159265358979323846264338327950
 #define endl          '\n'
 using namespace std;
+map<char,int>mp;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    int t;
+    cin>>t;
+    com(i,t)
     {
-        if(y%i==0)
+        int n,m;
+        cin>>n>>m;
+        int a[m],x,y,sum=0;
+        multiset<int,greater<int>>pos[n];
+        com(i,m)cin>>a[i];
+        com(i,n)
         {
-            pos.push_back(i);
-            if(y/i!=i)
+            cin>>x;
+            com(j,x)
             {
-                pos.push_back(y/i);
+                cin>>y;
+                pos[i].insert(y);
             }
         }
-    }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
+
+        com(i,m)
         {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
+            if(!pos[a[i]].empty())
+            {
+                sum+=*pos[a[i]].begin();
+                pos[a[i]].erase(pos[a[i]].begin());
+            }
         }
+        cout << sum << endl;
     }
-    cout << cnt << endl;
 }

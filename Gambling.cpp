@@ -18,31 +18,49 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    ll n,x=0,y=0,z=0,sum1=0,sum2=0;
+    bool c=true;
+    cin>>n;
+    vector<int>q,p;
+    com(i,n)
     {
-        if(y%i==0)
+        cin>>x;
+        q.push_back(x);
+    }
+    q.push_back(0);
+    sortvd(q);
+    com(i,n)
+    {
+        cin>>x;
+        p.push_back(x);
+    }
+    p.push_back(0);
+    sortvd(p);
+    while(z<2*n)
+    {
+        if(c)
         {
-            pos.push_back(i);
-            if(y/i!=i)
+            if(q[x]>=p[y])
             {
-                pos.push_back(y/i);
+                sum1+=q[x];
+                x++;
             }
+            else
+                y++;
         }
-    }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
+        else
         {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
+            if(p[y]>=q[x])
+            {
+                sum2+=p[y];
+                y++;
+            }
+            else
+                x++;
         }
+        c=!c;
+        z++;
     }
-    cout << cnt << endl;
+
+    cout << sum1-sum2 << endl;
 }

@@ -16,33 +16,38 @@ typedef long long     ll;
 #define pi            3.14159265358979323846264338327950
 #define endl          '\n'
 using namespace std;
+bool check[100009]={false};
+int total=0;
+int dfs(vector<int> v[],int root)
+{
+    int m,m1=-1,m2=-1;
+    check[root]=1;
+    for(int i=0;i<v[root].size();i++)
+    {
+        if(!check[v[root][i]]){
+            m = dfs(v,v[root][i]);
+            if(m>=m1)
+            {
+                m2= m1;
+                m1 = m;
+            }
+            else if(m>m2)
+                m2=m;
+        }
+    }
+    total = max(total , m1+m2+2);
+    return (m1 + 1);
+}
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
-    {
-        if(y%i==0)
-        {
-            pos.push_back(i);
-            if(y/i!=i)
-            {
-                pos.push_back(y/i);
-            }
-        }
+    int n,a,b;
+    cin>>n;
+    vector<int> v[n+9];
+    for(int i=0;i<n-1;i++){
+        scanf("%d%d",&a,&b);
+        v[a].push_back(b);
+        v[b].push_back(a);
     }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
-        {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
-        }
-    }
-    cout << cnt << endl;
+    dfs(v,1);
+    cout<<total<<endl;
 }

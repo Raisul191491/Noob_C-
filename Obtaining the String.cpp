@@ -16,33 +16,45 @@ typedef long long     ll;
 #define pi            3.14159265358979323846264338327950
 #define endl          '\n'
 using namespace std;
+vector<ll>pos;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    fast
+    int n,cnt=0;
+    cin>>n;
+    string s,t,u,v;
+    cin>>s>>t;
+    if(s==t)
     {
-        if(y%i==0)
-        {
-            pos.push_back(i);
-            if(y/i!=i)
-            {
-                pos.push_back(y/i);
-            }
-        }
+        cout << "0\n";
+        return 0;
     }
-    com(i,pos.size())
+    u=s,v=t;
+    sortvi(u);
+    sortvi(v);
+    if(u!=v)
+        cout << "-1\n";
+    else
     {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
-        {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
-        }
+         com(i,n)
+         {
+              if(s[i]!=t[i])
+              {
+                   ll x=i;
+                   while(s[x]!=t[i])
+                   {
+                        x++;
+                   }
+                   while(x>i)
+                   {
+                        pos.push_back(x);
+                        swap(s[x-1],s[x]);
+                        cnt++;
+                        x--;
+                   }
+              }
+         }
+         cout << cnt << endl;
+         com(i,pos.size()) cout << pos[i] << " ";
     }
-    cout << cnt << endl;
 }

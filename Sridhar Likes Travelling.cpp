@@ -18,31 +18,44 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    int t;
+    cin>>t;
+    com(i,t)
     {
-        if(y%i==0)
+        int n,cost=0,flag=0;
+        cin>>n;
+        map<string,pair<string,string>>pos;
+        map<string,int>mp;
+        com(i,n-1)
         {
-            pos.push_back(i);
-            if(y/i!=i)
+            string s,t,u;
+            cin>>s>>t>>u;
+            int l=u.size(),sum=0,x=0;
+            while(x<l-1)
             {
-                pos.push_back(y/i);
+                sum=sum*10+(u[x]-'0');
+                x++;
             }
+            mp[s]++;
+            mp[t]++;
+            pos[s]= {t,u};
+            cost+=sum;
         }
-    }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
+        string pp;
+        for(auto x:mp)
         {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
+            if(x.second==1)
+                pp=x.first;
+            while(pos.find(pp)!=pos.end())
+            {
+                pair<string,string>xp=pos[pp];
+                cout << pp<<" "<< xp.first << " " << xp.second << endl;
+                pp=xp.first;
+                flag=1;
+            }
+            if(flag)
+                break;
         }
+        cout << cost << "$" << endl;
     }
-    cout << cnt << endl;
 }

@@ -18,31 +18,46 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    int t;
+    cin>>t;
+    while(t--)
     {
-        if(y%i==0)
+        ll n,k,x,sum=0;
+        cin>>n>>k;
+        x=n-1;
+        vector<ll>v,pos(n),con(k);
+        for(int i=0;i<n;i++)
         {
-            pos.push_back(i);
-            if(y/i!=i)
+            cin>>pos[i];
+        }
+        for(int i=0;i<k;i++)
+        {
+            cin>>con[i];
+        }
+        sort(pos.begin(),pos.end());
+        sort(con.begin(),con.end());
+        com(i,k)
+        {
+            if(con[i]==1)
             {
-                pos.push_back(y/i);
+                sum+=2*pos[x];
+                x--;
+                con[i]=0;
+            }
+            else
+            {
+                sum+=pos[x];
+                con[i]--;
+                v.push_back(con[i]);
+                x--;
             }
         }
-    }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
+        for(int i=0;i<v.size();i++)
         {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
+            sum+=pos[x-v[i]+1];
+            x=x-v[i]+1;
+            x--;
         }
+        cout << sum << endl;
     }
-    cout << cnt << endl;
 }

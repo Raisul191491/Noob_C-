@@ -18,31 +18,42 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    int n;
+    cin>>n;
+    int a[50]= {0};
+    a[4]=0,a[8]=0,a[15]=0,a[16]=0,a[23]=0,a[42]=0;
+    int x;
+    com(i,n)
     {
-        if(y%i==0)
+        cin>>x;
+        if(x==4)
+            a[4]++;
+        else if(x==8)
         {
-            pos.push_back(i);
-            if(y/i!=i)
-            {
-                pos.push_back(y/i);
-            }
+            if(a[4])
+                a[4]--, a[8]++;
+        }
+        else if(x==15)
+        {
+            if(a[8])
+                a[8]--, a[15]++;
+        }
+        else if(x==16)
+        {
+            if(a[15])
+                a[15]--, a[16]++;
+        }
+        else if(x==23)
+        {
+            if(a[16])
+                a[16]--, a[23]++;
+        }
+        else if(x==42)
+        {
+            if(a[23])
+                a[23]--, a[42]++;
         }
     }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
-        {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
-        }
-    }
-    cout << cnt << endl;
+    n-=6*a[42];
+    cout << n << endl;
 }

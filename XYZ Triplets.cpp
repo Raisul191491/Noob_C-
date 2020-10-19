@@ -18,31 +18,36 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    fast
+    int n;
+    cin>>n;
+    map<pair<int,int>,int>mp;
+    dom(i,100)
     {
-        if(y%i==0)
+        for(int j=i; j<=100; j++)
         {
-            pos.push_back(i);
-            if(y/i!=i)
+            for(int k=j; k<=100; k++)
             {
-                pos.push_back(y/i);
+                if(i*i+j*j+k*k+i*j+j*k+k*i<=10000)
+                {
+                    set<int>ss;
+                    ss.insert(i);
+                    ss.insert(j);
+                    ss.insert(k);
+                    mp[{i*i+j*j+k*k+i*j+j*k+k*i,ss.size()}]++;
+                }
             }
         }
     }
-    com(i,pos.size())
+    ll ans[n+1];
+    dom(i,n)
     {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
-        {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
-        }
+        mp[{i,2}]*=3;
+        mp[{i,3}]*=6;
+        ans[i]=mp[{i,1}]+mp[{i,2}]+mp[{i,3}];
     }
-    cout << cnt << endl;
+    dom(i,n)
+    {
+        cout << ans[i] << endl;
+    }
 }

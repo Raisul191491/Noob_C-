@@ -18,31 +18,30 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
+    int t;
+    cin>>t;
+    com(i,t)
+    {
+        cout << "Case " << i+1 << ": ";
+        ll a,b;
+        cin>>a>>b;
+        ll sum=a*b;
+        if(a==1 || b==1)
+          cout << max(a,b) << endl;
+        else if(a==2 || b==2)
+        {
+             ll ans=max(a,b);
+             sum=ans;
+             if(ans%4==1 || ans%4==3)
+               sum++;
+             else if(ans%4==2)
+               sum+=2;
+             cout << sum << endl;
+        }
+        else if(sum%2==1)
+          cout << sum/2+1 << endl;
+        else if(sum%2==0)
+          cout << sum/2 << endl;
 
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
-    {
-        if(y%i==0)
-        {
-            pos.push_back(i);
-            if(y/i!=i)
-            {
-                pos.push_back(y/i);
-            }
-        }
     }
-    com(i,pos.size())
-    {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
-        {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
-        }
-    }
-    cout << cnt << endl;
 }

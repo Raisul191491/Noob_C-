@@ -16,33 +16,38 @@ typedef long long     ll;
 #define pi            3.14159265358979323846264338327950
 #define endl          '\n'
 using namespace std;
+int n,m,k;
+ll sum[200005]= {0};
+vector<int>pos[200005];
 int main()
 {
-    ll l,r,x,y,cnt=0;
-    cin>>l>>r>>x>>y;
-
-    vector<ll>pos;
-    for(int i=1; i*i<=y; i++)
+    int n,k;
+    cin>>n>>k;
+    int a[n+1];
+    for(int i=1; i<=n; i++)
+        cin>>a[i];
+    sort(a+1,a+n+1);
+    for (int i=1; i<=n; i++)
     {
-        if(y%i==0)
+        int x=a[i];
+        int cur=0;
+        while(x>0)
         {
-            pos.push_back(i);
-            if(y/i!=i)
+            if(pos[x].size()<k)
             {
-                pos.push_back(y/i);
+                pos[x].push_back(cur);
+                sum[x]+=cur;
             }
+            cur++;
+            x/=2;
         }
     }
-    com(i,pos.size())
+
+    ll ans=1e9+10;
+    for(int i=1; i<=2e5; i++)
     {
-        //cout << pos[i] << " ";
-        com(j,pos.size())
-        {
-            ll gc=__gcd(pos[i],pos[j]);
-            ll lc=lcm(pos[i],pos[j]);
-            if(gc==x && lc==y && pos[i]>=l && pos[i]<=r && pos[j]>=l && pos[j]<=r)
-                cnt++;
-        }
+        if(pos[i].size()==k)
+            ans=min(ans,sum[i]);
     }
-    cout << cnt << endl;
+    cout << ans << endl;;
 }
