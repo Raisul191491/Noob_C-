@@ -19,27 +19,29 @@ using namespace std;
 
 int main()
 {
-    int x=1;
-    while(1)
-    {
-        string s;
-        cin>>s;
-        if(s[0]=='-')
-            break;
-        int op=0,cl=0;
-        com(i,s.length())
-        {
-            if(s[i]=='{')
-                op++;
-            else if(op)
-                op--;
-            else
-            {
-                op++;
-                cl++;
-            }
-        }
-        cl+=op/2;
-        cout << x++ << ". " << cl << endl;
-    }
+     int t;
+     cin>>t;
+     com(i,t)
+     {
+          ll n,m,cnt=0;
+          cin>>n>>m;
+          ll a[n+1][m+1];
+          dom(i,n)
+          {
+               dom(j,m)
+               {
+                    cin>>a[i][j];
+               }
+          }
+          dom(i,n)
+          {
+               dom(j,m)
+               {
+                    ll cc[] = {a[i][j],a[i][m-j+1],a[n-i+1][m-j+1],a[n-i+1][j]};
+                    sortI(cc,4);
+                    cnt += abs(a[i][j]-cc[1]);
+               }
+          }
+          cout << cnt << endl;
+     }
 }

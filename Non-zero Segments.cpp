@@ -19,27 +19,26 @@ using namespace std;
 
 int main()
 {
-    int x=1;
-    while(1)
-    {
-        string s;
-        cin>>s;
-        if(s[0]=='-')
-            break;
-        int op=0,cl=0;
-        com(i,s.length())
-        {
-            if(s[i]=='{')
-                op++;
-            else if(op)
-                op--;
-            else
-            {
-                op++;
-                cl++;
-            }
-        }
-        cl+=op/2;
-        cout << x++ << ". " << cl << endl;
-    }
+     ll n;
+     cin>>n;
+     ll a[n],sum=0,cnt=0;
+     set<ll>ss;
+     com(i,n)
+     {
+          cin>>a[i];
+     }
+     ss.insert(a[0]);
+     sum=a[0];
+     dom(i,n-1)
+     {
+          sum+=a[i];
+          if(ss.find(sum)!=ss.end() || sum==0)
+          {
+               cnt++;
+               sum=a[i];
+               ss.clear();
+          }
+          ss.insert(sum);
+     }
+     cout << cnt << endl;
 }

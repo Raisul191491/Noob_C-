@@ -19,27 +19,17 @@ using namespace std;
 
 int main()
 {
-    int x=1;
-    while(1)
-    {
-        string s;
-        cin>>s;
-        if(s[0]=='-')
-            break;
-        int op=0,cl=0;
-        com(i,s.length())
-        {
-            if(s[i]=='{')
-                op++;
-            else if(op)
-                op--;
-            else
-            {
-                op++;
-                cl++;
-            }
-        }
-        cl+=op/2;
-        cout << x++ << ". " << cl << endl;
-    }
+     int t;
+     cin>>t;
+     com(i,t)
+     {
+          int n;
+          cin>>n;
+          int ans=INT_MAX;
+          dom(i,sqrt(n))
+          {
+               ans=min(ans,i-1+((n-1)/i));
+          }
+          cout << ans << endl;
+     }
 }

@@ -19,27 +19,30 @@ using namespace std;
 
 int main()
 {
-    int x=1;
-    while(1)
-    {
-        string s;
-        cin>>s;
-        if(s[0]=='-')
-            break;
-        int op=0,cl=0;
-        com(i,s.length())
-        {
-            if(s[i]=='{')
-                op++;
-            else if(op)
-                op--;
-            else
-            {
-                op++;
-                cl++;
-            }
-        }
-        cl+=op/2;
-        cout << x++ << ". " << cl << endl;
-    }
+     int t;
+     cin>>t;
+     com(i,t)
+     {
+          int n;
+          cin>>n;
+          int a[n],cnt=0;
+          com(i,n) cin>>a[i];
+          vector<int>qua;
+          int x=0;
+          while(a[x]==0)
+               x++;
+          for(int j=x;j<n;j++)
+          {
+               if(a[j]==1)
+               {
+                    qua.push_back(cnt);
+                    cnt=0;
+               }
+               else
+                    cnt++;
+          }
+          int sum=0;
+          sum=sumall(qua,sum);
+          cout << sum << endl;
+     }
 }

@@ -19,27 +19,13 @@ using namespace std;
 
 int main()
 {
-    int x=1;
-    while(1)
-    {
-        string s;
-        cin>>s;
-        if(s[0]=='-')
-            break;
-        int op=0,cl=0;
-        com(i,s.length())
-        {
-            if(s[i]=='{')
-                op++;
-            else if(op)
-                op--;
-            else
-            {
-                op++;
-                cl++;
-            }
-        }
-        cl+=op/2;
-        cout << x++ << ". " << cl << endl;
-    }
+     ll a[23];
+     a[0]=1;
+     for(ll i=1;i<=22;i++)
+     {
+          a[i]=i*a[i-1];
+     }
+     ll n;cin>>n;
+     ll x=(a[n]/(a[n-n/2]*a[n/2]))/2;
+     cout << (x*a[n/2-1]*a[n/2-1]) << endl;
 }

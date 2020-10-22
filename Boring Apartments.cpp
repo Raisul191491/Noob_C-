@@ -19,27 +19,24 @@ using namespace std;
 
 int main()
 {
-    int x=1;
-    while(1)
-    {
-        string s;
-        cin>>s;
-        if(s[0]=='-')
-            break;
-        int op=0,cl=0;
-        com(i,s.length())
-        {
-            if(s[i]=='{')
-                op++;
-            else if(op)
-                op--;
-            else
-            {
-                op++;
-                cl++;
-            }
-        }
-        cl+=op/2;
-        cout << x++ << ". " << cl << endl;
-    }
+     int t;
+     cin>>t;
+     com(i,t)
+     {
+          int n;
+          cin>>n;
+          int bac=n%10;
+          int cnt=(bac-1)*10,cc=0;
+          while(n)
+          {
+               cc++;
+               n/=10;
+          }
+          if(cc==1)
+               cnt++;
+          else if(cc==2)cnt+=3;
+          else if(cc==3)cnt+=6;
+          else if(cc==4)cnt+=10;
+          cout << cnt << endl;
+     }
 }

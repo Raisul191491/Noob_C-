@@ -19,27 +19,13 @@ using namespace std;
 
 int main()
 {
-    int x=1;
-    while(1)
-    {
-        string s;
-        cin>>s;
-        if(s[0]=='-')
-            break;
-        int op=0,cl=0;
-        com(i,s.length())
-        {
-            if(s[i]=='{')
-                op++;
-            else if(op)
-                op--;
-            else
-            {
-                op++;
-                cl++;
-            }
-        }
-        cl+=op/2;
-        cout << x++ << ". " << cl << endl;
-    }
+     int n,k;
+     cin>>n>>k;
+     dom(i,n)
+     {
+          if(k-->0)
+               cout << i*2-1 << " " << i*2 << " ";
+          else
+               cout << i*2 << " " << i*2-1 << " ";
+     }
 }

@@ -19,27 +19,35 @@ using namespace std;
 
 int main()
 {
-    int x=1;
-    while(1)
-    {
-        string s;
-        cin>>s;
-        if(s[0]=='-')
-            break;
-        int op=0,cl=0;
-        com(i,s.length())
-        {
-            if(s[i]=='{')
-                op++;
-            else if(op)
-                op--;
-            else
-            {
-                op++;
-                cl++;
-            }
-        }
-        cl+=op/2;
-        cout << x++ << ". " << cl << endl;
-    }
+     int t;
+     cin>>t;
+     com(i,t)
+     {
+//          map<int,int>mp;
+          int n,f=-1;
+          cin>>n;
+          int a[n];
+          com(i,n)
+          {
+               cin>>a[i];
+//               mp[a[i]]++;
+//               if(mp[a[i]]>n/2)
+//                    f=1;
+               if(a[i]!=a[0]) f=i;
+          }
+          if(f==-1)
+               cout << "NO" << endl;
+          else
+          {
+               cout << "YES" << endl;
+               dom(i,n-1)
+               {
+                    if(a[i]!=a[0])
+                         cout << 1 << " " << i+1 << endl;
+                    else
+                         cout << f+1 << " " << i+1 << endl;
+               }
+          }
+
+     }
 }
