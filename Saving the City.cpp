@@ -18,27 +18,40 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     string s="0000",k="0000";
-     int x,y,beg=0;
-     com(i,4)
+     int t;
+     cin>>t;
+     com(i,t)
      {
-          com(j,10)
+          int a,b,spend=0,one=0;
+          cin>>a>>b;
+          string s;
+          cin>>s;
+          vector<int>cnt;
+          int gun=0,beg=0;
+          while(s[beg]=='0')
+               beg++;
+          for(int i=beg;i<s.length();i++)
           {
-               cout << s << endl;
-               cin>>x>>y;
-               if(x>beg)
+               if(s[i]=='1')
                {
-                    beg=x;
-                    k[i]=s[i];
+                    one=1;
+                    if(gun>0)
+                         cnt.push_back(gun);
+                    gun=0;
                }
-               else if(x<beg)
-               {
-                    k[i]=(((s[i]-'0')-1)+'0');
-                    break;
-               }
-               s[i]=(((s[i]-'0')+1)+'0');
+               else
+                    gun++;
           }
-          if(beg==4)
-               break;
+          if(cnt.size()==0 && one==0){
+               cout << spend << endl;
+               continue;
+          }
+          spend=(cnt.size()+1)*a;
+          com(i,cnt.size())
+          {
+               if((spend-a+cnt[i]*b)<=spend)
+                    spend=spend-a+cnt[i]*b;
+          }
+          cout << spend << endl;
      }
 }

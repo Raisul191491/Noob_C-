@@ -18,27 +18,26 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     string s="0000",k="0000";
-     int x,y,beg=0;
-     com(i,4)
+     int t;
+     cin>>t;
+     com(i,t)
      {
-          com(j,10)
+          int n,x,odd=0,eve=0;
+          cin>>n>>x;
+          com(i,n)
           {
-               cout << s << endl;
-               cin>>x>>y;
-               if(x>beg)
-               {
-                    beg=x;
-                    k[i]=s[i];
-               }
-               else if(x<beg)
-               {
-                    k[i]=(((s[i]-'0')-1)+'0');
-                    break;
-               }
-               s[i]=(((s[i]-'0')+1)+'0');
+               int x;
+               cin>>x;
+               if(x&1)
+                    odd++;
+               else
+                    eve++;
           }
-          if(beg==4)
-               break;
+          int walt=(x+1)/2,jess=x/2;
+          if(walt>=eve && odd)
+               cout << "Walter" << endl;
+          else if(jess>=odd && eve)
+               cout << "Jesse" << endl;
+
      }
 }

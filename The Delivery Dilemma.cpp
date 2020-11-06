@@ -18,27 +18,36 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     string s="0000",k="0000";
-     int x,y,beg=0;
-     com(i,4)
-     {
-          com(j,10)
-          {
-               cout << s << endl;
-               cin>>x>>y;
-               if(x>beg)
-               {
-                    beg=x;
-                    k[i]=s[i];
-               }
-               else if(x<beg)
-               {
-                    k[i]=(((s[i]-'0')-1)+'0');
-                    break;
-               }
-               s[i]=(((s[i]-'0')+1)+'0');
-          }
-          if(beg==4)
-               break;
-     }
+    int t;
+    cin>>t;
+    com(i,t)
+    {
+        ll n,x,y;
+        cin>>n;
+        ll mycost=0,delcost=0,a[n];
+
+        vector<pair<ll,ll>>num;
+
+        com(i,n) cin>>a[i];
+        com(i,n)
+        {
+            cin>>x;
+            num.push_back({a[i],x});
+        }
+        sortvi(num);
+
+ //       com(i,n) cout << num[i].fr << " ";
+
+        mom(i,n-1)
+        {
+            if(mycost+num[i].sc>=max(delcost,num[i].fr))
+            {
+                delcost=max(delcost,num[i].fr);
+            }
+            else
+                mycost+=num[i].sc;
+        }
+
+        cout << max(mycost,delcost) << endl;
+    }
 }

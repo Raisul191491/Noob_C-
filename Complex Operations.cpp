@@ -18,27 +18,34 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-     string s="0000",k="0000";
-     int x,y,beg=0;
-     com(i,4)
+     ll n,q,cut=0,y;
+     cin>>n>>q;
+     vector<ll>num;
+     ll x;
+     com(i,n)
      {
-          com(j,10)
+          cin>>x;
+          num.push_back(x);
+     }
+     sortvi(num);
+     com(i,q)
+     {
+          cin>>x;
+          if(x==1)
           {
-               cout << s << endl;
-               cin>>x>>y;
-               if(x>beg)
-               {
-                    beg=x;
-                    k[i]=s[i];
-               }
-               else if(x<beg)
-               {
-                    k[i]=(((s[i]-'0')-1)+'0');
-                    break;
-               }
-               s[i]=(((s[i]-'0')+1)+'0');
+               cin>>y;
+               cut+=y;
           }
-          if(beg==4)
-               break;
+          else
+          {
+               ll l,r,k;
+               cin>>l>>r>>k;
+               ll beg = lower_bound(num.begin(),num.end(),l+cut)-num.begin();
+               ll sta = upper_bound(num.begin(),num.end(),r+cut)-num.begin();
+               if(sta-beg<k)
+                    cout << -1 << endl;
+               else
+                    cout << num[beg+k-1]-cut << endl;
+          }
      }
 }
