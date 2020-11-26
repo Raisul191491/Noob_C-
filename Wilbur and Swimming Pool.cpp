@@ -18,41 +18,27 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
-    {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
-        {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
-            {
-                if(q%i==0)
-                {
-                    cnt=p;
-                    if(i>1)
+     int t;
+     cin>>t;
+     int a[5],b[5];
+
+     com(i,t) cin>>a[i]>>b[i];
+
+     if(t==1)
+          cout << -1 << endl;
+     else
+     {
+          com(i,t)
+          {
+               for(int j=i+1;j<t;j++)
+               {
+                    if(a[i]!=a[j]&&b[i]!=b[j])
                     {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
+                         cout << abs((a[i]-a[j])*(b[i]-b[j])) << endl;
+                         return 0;
                     }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
-                }
-            }
-            cout << ans << endl;
-        }
-    }
+               }
+          }
+          cout << -1 << endl;
+     }
 }

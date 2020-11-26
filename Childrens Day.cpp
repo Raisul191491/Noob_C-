@@ -18,41 +18,29 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
-    {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
-        {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
-            {
-                if(q%i==0)
-                {
-                    cnt=p;
-                    if(i>1)
+     int t;
+     cin>>t;
+     com(i,t)
+     {
+          int a,b,c,d,cnt=0;
+          cin>>a>>b>>c>>d;
+          for(int i=a;i<=b;i++)
+          {
+               for(int j=c;j<=d;j++)
+               {
+                    int x=max(i,j),y=min(i,j);
+                    while(y)
                     {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
+                         cnt+=x/y;
+                         int ss=y;
+                         //cout << cnt << " ";
+                         y=x%y;
+                         x=min(x,ss);
                     }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
-                }
-            }
-            cout << ans << endl;
-        }
-    }
+               }
+          }
+          cout << cnt << endl;
+     }
 }
+ && (a[i][j]==a[i-1][j] || a[i][j]==a[i][j-1] || a[i][j]==a[i+1][j] || a[i][j]==a[i][j+1] || a[i][j]==a[i-1][j-1]
+      || a[i][j]==a[i+1][j-1] || a[i][j]==a[i-1][j+1] || a[i][j]==a[i+1][j+1])

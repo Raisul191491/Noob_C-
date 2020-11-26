@@ -22,37 +22,17 @@ int main()
     cin>>t;
     com(i,t)
     {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
+        int k,x;
+        cin>>k>>x;
+        int mn=1e8;
+        for(int i=1; i<=sqrt(x); i++)
         {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
+            if(x%i==0 && x/i!=i)
             {
-                if(q%i==0)
-                {
-                    cnt=p;
-                    if(i>1)
-                    {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
-                    }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
-                }
+                mn=min(mn,(x/i+i)+k-2);
+                //cout << x/i <<  ' ' << i << endl;
             }
-            cout << ans << endl;
         }
+        cout << min(mn,x+(k-1)) << endl;
     }
 }

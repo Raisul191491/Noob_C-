@@ -22,37 +22,42 @@ int main()
     cin>>t;
     com(i,t)
     {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
+        int n,q;
+        cin>>n>>q;
+        string s;
+        cin>>s;
+        com(i,q)
         {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
+            int l,r;
+            cin>>l>>r;
+            l-=1;
+            r-=1;
+            if(r-l==0)
+                cout << "NO" << endl;
+            else
             {
-                if(q%i==0)
+                int f=0;
+                for(int j=0; j<l; j++)
                 {
-                    cnt=p;
-                    if(i>1)
+                    if(s[j]==s[l])
                     {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
+                        f=1;
+                        break;
                     }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
                 }
+                for(int j=r+1; j<n; j++)
+                {
+                    if(s[j]==s[r])
+                    {
+                        f=1;
+                        break;
+                    }
+                }
+                if(f)
+                    cout << "YES" << endl;
+                else
+                    cout << "NO" << endl;
             }
-            cout << ans << endl;
         }
     }
 }

@@ -22,37 +22,52 @@ int main()
     cin>>t;
     com(i,t)
     {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
+        ll d,k,x=0,y=0,dis=0;
+        cin>>d>>k;
+        d=pow(d,2);
+        bool c=false;
+        while(1)
         {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
+            if(x<=y)
             {
-                if(q%i==0)
+                x+=k;
+                ll dis1=pow(x,2)+pow(y,2);
+                if(dis1>d)
                 {
-                    cnt=p;
-                    if(i>1)
+                    if(c==false)
                     {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
+                        cout << "Utkarsh" << endl;
+                        break;
                     }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
+                    else
                     {
-                         cnt/=x;
+                        cout << "Ashish" << endl;
+                        break;
                     }
-                    ans=max(ans,cnt);
                 }
+                else
+                    c=!c;
             }
-            cout << ans << endl;
+            else
+            {
+                y+=k;
+                ll dis1=pow(x,2)+pow(y,2);
+                if(dis1>d)
+                {
+                    if(c==false)
+                    {
+                        cout << "Utkarsh" << endl;
+                        break;
+                    }
+                    else
+                    {
+                        cout << "Ashish" << endl;
+                        break;
+                    }
+                }
+                else
+                    c=!c;
+            }
         }
     }
 }

@@ -18,41 +18,24 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    int n;
+    cin>>n;
+    double a[n],area=0;
+
+    com(i,n)
     {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
-        {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
-            {
-                if(q%i==0)
-                {
-                    cnt=p;
-                    if(i>1)
-                    {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
-                    }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
-                }
-            }
-            cout << ans << endl;
-        }
+        cin>>a[i];
     }
+
+    sortD(a,n);
+
+    mom(i,n-1)
+    {
+        if(i%2==0)
+            area+=pi*pow(a[i],2);
+        else
+            area-=pi*pow(a[i],2);
+    }
+
+    cout << fixed << setprecision(10) << area << endl;
 }

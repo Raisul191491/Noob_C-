@@ -22,37 +22,34 @@ int main()
     cin>>t;
     com(i,t)
     {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
+        int n,m,beg=0;
+        cin>>n>>m;
+        int a[n],en=n-1;
+        bool f=true;
+
+        com(i,n)
+        {
+            cin>>a[i];
+        }
+
+        com(i,min(n,m))
+        {
+            if(f)
+                cout << a[beg++] << " ";
+            else
+                cout << a[en--] << " ";
+            f=!f;
+        }
+        if(f)
+        {
+            for (int i=en; i>=beg; i--)
+                cout << a[i] << " ";
+        }
         else
         {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
-            {
-                if(q%i==0)
-                {
-                    cnt=p;
-                    if(i>1)
-                    {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
-                    }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
-                }
-            }
-            cout << ans << endl;
+            for (int i=beg; i<=en; i++)
+                cout << a[i] << " ";
         }
+        cout << endl;
     }
 }

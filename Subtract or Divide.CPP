@@ -18,41 +18,55 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    bool pr[1000000009];
+    memset(pr, true, sizeof(pr));
+
+    for (int p=2; p*p<=1000000008; p++)
     {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
+        if (pr[p] == true)
         {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
-            {
-                if(q%i==0)
-                {
-                    cnt=p;
-                    if(i>1)
-                    {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
-                    }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
-                }
-            }
-            cout << ans << endl;
+            for (int i=p*p; i<=1000000008; i += p)
+                pr[i] = false;
         }
     }
+
+    int n,cnt=0;
+    cin>>n;
+    while(n!=1)
+    {
+        if(n==1)
+        {
+            break;
+        }
+        else if(n==2)
+        {
+            cnt+=1;
+            n=1;
+        }
+        else if(n==3)
+        {
+            cnt+=2;
+            n=1;
+        }
+        else
+        {
+            if(pr[n]==true)
+            {
+                n--;
+                cnt++;
+            }
+            else
+            {
+                 dom(i,sqrt(n))
+                 {
+                      if(n%i==0)
+                      {
+                           cnt++;
+                           n=i;
+                      }
+                 }
+            }
+        }
+    }
+    cout << cnt << endl << endl;
 }

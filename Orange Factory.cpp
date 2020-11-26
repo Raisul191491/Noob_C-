@@ -18,41 +18,32 @@ typedef long long     ll;
 using namespace std;
 int main()
 {
-    int t;
-    cin>>t;
-    com(i,t)
+    ll m,n,sum=0;
+    cin>>m>>n;
+    ll a[m];
+
+    com(i,m)
     {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
+        cin>>a[i];
+        sum+=a[i];
+    }
+
+    if(sum<=n)
+    {
+        cout << "Sorry, we can only supply " << sum-1 << " oranges" << endl;
+        com(i,m-1)
         {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
-            {
-                if(q%i==0)
-                {
-                    cnt=p;
-                    if(i>1)
-                    {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
-                    }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
-                }
-            }
-            cout << ans << endl;
+             cout << a[i] << " " << a[i] << " 0" << endl;
         }
+        cout << a[m-1] << " " << a[m-1]-1 << " 1" << endl;
+    }
+    else
+    {
+         cout << "Thank you, your order for " << n << " oranges are accepted" << endl;
+         com(i,m)
+         {
+              cout << a[i] << " " << min(a[i],n) << " " << a[i]-min(a[i],n) << endl;
+              n-=min(a[i],n);
+         }
     }
 }

@@ -22,37 +22,34 @@ int main()
     cin>>t;
     com(i,t)
     {
-        ll p,q,cnt=0;
-        cin>>p>>q;
-        vector<int>pos;
-        if(p%q>0)
-            cout << p << endl;
-        else
+        int n,x;
+        cin>>n;
+        long double a[n+1],mul=1.0,sum=0.0;
+        dom(i,n)
         {
-            ll ans=1;
-            for(ll i=1; i*i<=q; i++)
+            cin>>a[i];
+        }
+        int m;
+        cin>>m;
+        com(i,m)
+        {
+            cin>>x;
+            if(a[x]==0.0)
+                continue;
+            mul=1;
+            dom(j,n)
             {
-                if(q%i==0)
+                if(j!=x)
                 {
-                    cnt=p;
-                    if(i>1)
-                    {
-                        while(cnt%q==0)
-                        {
-                            cnt/=i;
-                        }
-                        ans=max(ans,cnt);
-                    }
-                    cnt=p;
-                    ll x=q/i;
-                    while(cnt%q==0)
-                    {
-                         cnt/=x;
-                    }
-                    ans=max(ans,cnt);
+                    mul*=a[j];
+                    if(mul>1000000000.0)
+                        break;
                 }
             }
-            cout << ans << endl;
+            if(mul>1000000000.0 || mul==0.0)
+                continue;
+            sum+=floor(mul/(long double)pow(a[x],(long double)2));
         }
+        cout << "Case #" << i+1 << ": " << sum << endl;
     }
 }
