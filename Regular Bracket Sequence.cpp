@@ -1,4 +1,11 @@
 #include<bits/stdc++.h>
+typedef long long     ll;
+#define fast          ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define last          freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+#define in(x)         freopen("x","r",stdin);
+#define fr            first
+#define sc            second
+#define lcm(a,b)      (a*b)/__gcd(a,b)
 #define com(i,n)      for(int i=0;i<n;i++)
 #define dom(i,n)      for(int i=1;i<=n;i++)
 #define mom(i,n)      for(int i=n;i>=0;i--)
@@ -7,25 +14,20 @@
 #define sortvi(a)     sort(a.begin(),a.end())
 #define sortvd(a)     sort(a.begin(),a.end(),greater<int>())
 #define sumall(a,x)   accumulate(a.begin(),a.end(),x)
+#define pi            3.14159265358979323846264338327950
+#define endl          '\n'
 using namespace std;
 int main()
 {
-    string s;
-    int a=0,b=0;
-    cin>>s;
-    com(i,s.size())
-    {
-        if(s[i]=='(')
-            a++;
-        else
-        {
-            if(a>0)
-            {
-                 a--;
-                 b++;
-            }
-        }
-    }
-    cout << b*2 << endl;
-
+     int t;
+     cin>>t;
+     while(t--)
+     {
+          string s;
+          cin>>s;
+          if(s.length()%2 || s[s.length()-1]=='(' || s[0]==')')
+               cout << "NO" << endl;
+          else
+               cout << "YES" << endl;
+     }
 }
